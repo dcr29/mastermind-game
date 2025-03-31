@@ -19,4 +19,8 @@ class Ball:
     def is_clicked(self, pos):
         # Vérifie si le clic est dans la bille
         #si oui retourne la couleur de la bille sinon retourne False
-        pass
+        distance = ((self.x - pos[0]) ** 2 + (self.y - pos[1]) ** 2) ** 0.5 #calcul de la distance entre la position du click et le centre
+        if distance <= self.radius:
+            print (self.color)
+            return self.color
+        return False
