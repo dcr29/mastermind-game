@@ -10,8 +10,8 @@ class Hole:
         
 
     def draw(self, screen):
-        pygame.draw.circle(screen, self.color, (int(self.x), int(self.y)), self.rayon)
-        pygame.draw.circle(screen, (0, 0, 0), (int(self.x), int(self.y)), self.rayon, 2)  # Contour noir
+        pygame.draw.circle(screen, self.color, (int(self.x), int(self.y)), self.radius)
+        pygame.draw.circle(screen, (0, 0, 0), (int(self.x), int(self.y)), self.radius, 2)  # Contour noir
 
     def move(self, x, y):
         # Déplacer le trou
