@@ -13,8 +13,12 @@ class ColorPalette :
             x_ball += 2 * ball_radius 
     
     def draw(self, screen):
-        for bille in self.balls:
-            bille.draw(screen) 
+        for ball in self.balls:
+            ball.draw(screen) 
 
     def is_clicked(self, pos):
-        pass
+        for ball in self.balls:
+            color = ball.is_clicked(pos) #la bille retourne sa couleur si elle est cliqué
+            if color :
+                return color
+        return False

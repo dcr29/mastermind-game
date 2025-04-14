@@ -14,7 +14,7 @@ running = True
 
 #déclaration des objets :
 hole = Hole(400,300,50,(100,100,100))
-button = Button(500, 500, 50, 50, "Jouer", (255, 0, 0), 20)
+button = Button(750, 0, 50, 50, "END", (255, 0, 0), 20)
 avaibleColor = [(0, 0, 255), (255, 192, 203), (255, 0, 0), (0, 255, 0), (255, 255, 0), (255, 165, 0), (238, 130, 238), (255, 255, 255)]
 colorPalette = ColorPalette(4,screen.get_width(),screen.get_height(),avaibleColor)
 color=()
@@ -34,7 +34,7 @@ while running:
                     color = clicked
                 hole.is_clicked(event.pos,color)
                 if button.is_clicked(event.pos):
-                    print("Clic détécté sur le bouton")
+                    running = False #si le bouton est cliqué on arrete le jeu
                     
     colorPalette.draw(screen)
     button.draw(screen)
