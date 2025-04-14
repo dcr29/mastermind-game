@@ -1,6 +1,7 @@
 import pygame
 from Ball import Ball
 from Button import Button
+from Hole import Hole
 
 pygame.init()
     
@@ -13,21 +14,28 @@ ball1 = Ball(400,300,50,(255,0,255))
 
 running = True
 
+ball1 = Ball(400,550,50,(255,0,255))
+hole = Hole(400,300,50,(100,100,100))
+color=()
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
             running = False
-        elif event.type == pygame.MOUSEBUTTONUP:    # si clic
-            if event.button == 1:   # si c'est un clic gauche
-                ball1.is_clicked(event.pos)
-                
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if button.is_clicked(event.pos):
-                print("Clic détécté sur le bouton")
 
-    button.draw(screen)        
+        elif event.type == pygame.MOUSEBUTTONUP: # si click
+            if event.button == 1: # si c'est un click gauche
+                clicked = ball1.is_clicked(event.pos)
+                if clicked :
+                    color = clicked
+                hole.is_clicked(event.pos,color)
+                if button.is_clicked(event.pos):
+                    print("Clic détécté sur le bouton")
+                    
     ball1.draw(screen)
-    
+    button.draw(screen)
+    hole.draw(screen)
+
     pygame.display.flip()
 
 pygame.quit()
