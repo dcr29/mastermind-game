@@ -2,6 +2,7 @@ import pygame
 from Ball import Ball
 from Button import Button
 from Hole import Hole
+from DoneLine import DoneLine
 
 pygame.init()
     
@@ -17,6 +18,9 @@ running = True
 ball1 = Ball(400,550,50,(255,0,255))
 hole = Hole(400,300,50,(100,100,100))
 color=()
+test_colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0)]
+done_line = DoneLine(test_colors, 800, 600, correctCount=2, wrongPlaceCount=1)
+done_line.place(50, 100) 
 
 while running:
     for event in pygame.event.get():
@@ -35,6 +39,7 @@ while running:
     ball1.draw(screen)
     button.draw(screen)
     hole.draw(screen)
+    done_line.draw(screen)
 
     pygame.display.flip()
 
