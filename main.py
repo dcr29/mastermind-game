@@ -10,18 +10,19 @@ screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Mastermind")
 
 screen.fill((255, 255, 255))
-running = True
 
-#déclaration des objets :
+# déclaration des objets :
 hole = Hole(400,300,50,(100,100,100))
 button = Button(750, 0, 50, 50, "END", (255, 0, 0), 20)
 avaibleColor = [(0, 0, 255), (255, 192, 203), (255, 0, 0), (0, 255, 0), (255, 255, 0), (255, 165, 0), (238, 130, 238), (255, 255, 255)]
 colorPalette = ColorPalette(4,screen.get_width(),screen.get_height(),avaibleColor)
 color=()
-test_colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0)]
-done_line = DoneLine(test_colors, 800, 600, correctCount=2, wrongPlaceCount=1)
-done_line.place(50, 100) 
 
+test_colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0)]
+done_line = DoneLine(100, 100, test_colors, 800, 600, correctCount = 2, wrongPlaceCount = 1)
+done_line.move(50, 100)
+
+running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 
