@@ -1,7 +1,7 @@
 import pygame
 from ColorPalette import ColorPalette
 from Button import Button
-from Hole import Hole
+from Line import Line
 from DoneLine import DoneLine
 
 pygame.init()
@@ -12,7 +12,7 @@ pygame.display.set_caption("Mastermind")
 screen.fill((255, 255, 255))
 
 # déclaration des objets :
-hole = Hole(400,300,50,(100,100,100))
+line = Line(screen.get_width(),screen.get_height())
 button = Button(750, 0, 50, 50, "END", (255, 0, 0), 20)
 avaibleColor = [(0, 0, 255), (255, 192, 203), (255, 0, 0), (0, 255, 0), (255, 255, 0), (255, 165, 0), (238, 130, 238), (255, 255, 255)]
 colorPalette = ColorPalette(4,screen.get_width(),screen.get_height(),avaibleColor)
@@ -33,13 +33,12 @@ while running:
                 clicked = colorPalette.is_clicked(event.pos)
                 if clicked :
                     color = clicked
-                hole.is_clicked(event.pos,color)
                 if button.is_clicked(event.pos):
                     running = False #si le bouton est cliqué on arrete le jeu
                     
     colorPalette.draw(screen)
     button.draw(screen)
-    hole.draw(screen)
+    line.draw(screen)
     done_line.draw(screen)
 
     pygame.display.flip()
