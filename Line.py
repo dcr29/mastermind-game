@@ -34,8 +34,11 @@ class Line :
         for hole in self.Holes :
             hole.is_clicked(pos,color)
         if self.valid_button.is_clicked(pos):
+            for hole in self.Holes :
+                if hole.color == (100,100,100):#si une case pas remplie on n'accepte pas la validation
+                    return False
             valid_comb = []
             for hole in self.Holes :
-                valid_comb.append(hole.color)
-                hole.color = (100,100,100) #reset de la couleur des trou
+                    valid_comb.append(hole.color)
+                    hole.color = (100,100,100) #reset de la couleur des trous
             return valid_comb

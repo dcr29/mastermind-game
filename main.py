@@ -1,8 +1,6 @@
 import pygame
 from ColorPalette import ColorPalette
-from Button import Button
 from Line import Line
-from DoneLine import DoneLine
 
 pygame.init()
     
@@ -16,7 +14,6 @@ line = Line(screen.get_width(),screen.get_height())
 avaibleColor = [(0, 0, 255), (255, 192, 203), (255, 0, 0), (0, 255, 0), (255, 255, 0), (255, 165, 0), (238, 130, 238), (255, 255, 255)]
 colorPalette = ColorPalette(4,screen.get_width(),screen.get_height(),avaibleColor)
 color=None
-doneLine=None
 
 running = True
 while running:
@@ -33,11 +30,10 @@ while running:
                 clicked = colorPalette.is_clicked(event.pos)
                 if clicked :
                     color = clicked
-                
-                    
+                                    
     colorPalette.draw(screen)
     line.draw(screen)
-    #doneLine.draw(screen)
+
 
     pygame.display.flip()
 
