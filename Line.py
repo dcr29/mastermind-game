@@ -25,10 +25,13 @@ class Line :
 
     def draw(self, screen):
         pygame.draw.rect(screen, (150, 150, 150), self.rect_back, border_radius=15)  # Rectangle gris avec bords arrondis
-    
+        all_is_colored = True
         for hole in self.Holes :
             hole.draw(screen)
-        self.valid_button.draw(screen)
+            if hole.color == (100,100,100):#si une case pas remplie on affiche pas le bouton 
+                    all_is_colored =  False
+        if all_is_colored :
+            self.valid_button.draw(screen)
 
     def is_clicked(self, pos, color):
         for hole in self.Holes :
