@@ -1,11 +1,12 @@
-from scenes import *
+from scene import *
+from GameScene import GameScene
 import pygame
 
 class SceneGestion:
     def __init__(self, screen):
         self.screen = screen
         self.running = True
-        self.current_scene = None
+        self.current_scene = GameScene(self.screen)
         
     def game_loop(self):
         while self.running:
