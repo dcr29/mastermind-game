@@ -9,9 +9,7 @@ class GameScene(Scene):
         super().__init__(screen)
         self.game = GameGestion("Easy", self.screen.get_width(), self.screen.get_height())
         self.color = None
-        print("La combinaison à trouver est :", self.game.get_combination())
-
-
+        
     def handle_events(self, event):
         if event.type == pygame.QUIT:
             return "fin"
@@ -21,9 +19,14 @@ class GameScene(Scene):
                     valid = self.game.line.is_clicked(event.pos, self.color)
                     if valid:
                         print(valid)
+                    if isinstance(valid, list):
+                        self.game.verify_combination(valid)
+
                 clicked = self.game.colorPalette.is_clicked(event.pos)
                 if clicked:
                     self.color = clicked
+                    
+
 
     def draw(self):
         self.game.draw(self.screen)
