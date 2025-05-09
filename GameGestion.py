@@ -10,22 +10,20 @@ class GameGestion():
         self.screen_height = screen_height
         self.available_colors = [(0, 0, 255), (255, 192, 203), (255, 0, 0), (0, 255, 0)]    # (255, 255, 0), (255, 165, 0), (238, 130, 238), (255, 255, 255)] autres couleurs pour autres niveaux
         self.line = Line(screen_width, screen_height)
-        self.colorPalette = ColorPalette(4, screen_width, screen_height, self.available_colors)
+        
         self.color = None
         self.last_done_line = None 
         
         # Définition du nombre de couleurs disponibles selon le niveau
         if level == "Easy":
             self.nb_colors = 4
-        elif level == "Medium":
-            self.nb_colors = 6
         else:
             self.nb_colors = 4
-        
+        self.colorPalette = ColorPalette(self.nb_colors, screen_width, screen_height, self.available_colors)
+        #creation de la combinaison
         self.combination = []
         for i in range(self.nb_colors):
-            selected_colors = random.choice(self.available_colors)
-            self.combination.append(selected_colors)
+            self.combination.append(self.available_colors[random.randint(0,self.nb_colors-1)])
     
     def verify_combination(self, proposed_combination):
         correctCount = 0 
