@@ -65,6 +65,12 @@ class GameGestion():
         if self.last_done_line:
             self.last_done_line.draw(screen)
         
-        
+    def scroll(self,type):
+        if (self.last_done_line) :
+            speed_scroll = self.screen_height/20
+            if type==0 :
+                self.last_done_line.move(self.last_done_line.x , self.last_done_line.y-30) 
+            elif type ==1:
+                self.last_done_line.move(self.last_done_line.x , self.last_done_line.y+30) 
         
         

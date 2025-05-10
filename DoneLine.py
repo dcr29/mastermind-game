@@ -14,6 +14,7 @@ class DoneLine:
     def move(self, start_x, start_y):  # positionne les rectangles (billes) à partir d'un point donné
         self.x = start_x
         self.y = start_y
+        self.rects = [] #reset de la liste de rect
         for i in range(4):
             rect = pygame.Rect(self.x + i * self.width, self.y, self.width, self.height)
             self.rects.append(rect)

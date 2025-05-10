@@ -25,6 +25,10 @@ class GameScene(Scene):
                 clicked = self.game.colorPalette.is_clicked(event.pos)
                 if clicked:
                     self.color = clicked
+            elif event.button==4:
+                self.game.scroll(0)
+            elif event.button==5:
+                self.game.scroll(1)
                     
 
 
