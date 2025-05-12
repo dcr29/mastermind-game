@@ -2,7 +2,7 @@ import pygame
 import random
 from Line import Line
 from ColorPalette import ColorPalette
-from DoneLine import DoneLine
+from DoneLineGestion import DoneLineGestion
 
 class GameGestion():
     def __init__(self, level, screen_width, screen_height):
@@ -12,7 +12,7 @@ class GameGestion():
         self.line = Line(screen_width, screen_height)
         
         self.color = None
-        self.last_done_line = None 
+        self.doneLineGestion = DoneLineGestion( 3*self.screen_width/8,self.screen_height * 0.02) 
         
         # Définition du nombre de couleurs disponibles selon le niveau
         if level == "Easy":
@@ -53,24 +53,22 @@ class GameGestion():
         line_width = 4 * ball_width
         x = (self.screen_width - line_width) // 2
         y = self.screen_height // 20
-        self.last_done_line = DoneLine(x, y, proposed_combination, self.screen_width, self.screen_height, correctCount, wrongPlaceCount)
-        self.last_done_line.move(self.last_done_line.x, self.last_done_line.y)
-        
+        self.doneLineGestion.add_DoneLine(proposed_combination, self.screen_width, self.screen_height, correctCount, wrongPlaceCount)
         return correctCount == len(self.combination)
                 
     def draw(self, screen):
         screen.fill((255, 255, 255))
         self.colorPalette.draw(screen)
         self.line.draw(screen)
-        if self.last_done_line:
-            self.last_done_line.draw(screen)
+        if self.doneLineGestion.DoneLines:
+            self.doneLineGestion.draw(screen)
         
     def scroll(self,type):
-        if (self.last_done_line) :
-            speed_scroll = self.screen_height/20
+        if (self.doneLineGestion.DoneLines) :
+            speed_scroll = self.screen_height/30
             if type==0 :
-                self.last_done_line.move(self.last_done_line.x , self.last_done_line.y-30) 
+                self.doneLineGestion.yAll -=speed_scroll 
             elif type ==1:
-                self.last_done_line.move(self.last_done_line.x , self.last_done_line.y+30) 
+                self.doneLineGestion.yAll +=speed_scroll 
         
         

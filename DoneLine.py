@@ -1,13 +1,11 @@
 import pygame
 
 class DoneLine:
-    def __init__(self, x, y, color, screen_width, screen_height, correctCount, wrongPlaceCount):
+    def __init__(self, color, screen_width, screen_height, correctCount, wrongPlaceCount):
         self.color = color  # liste des couleurs proposées par le joueur
         self.rects = [] # liste de rectangles représentants les billes
         self.width = screen_width // 16 
         self.height = screen_height // 12
-        self.x = x
-        self.y = y
         self.correctCount = correctCount    # nombre de billes bien placées
         self.wrongPlaceCount = wrongPlaceCount  # nombre de billes mal placées
 
