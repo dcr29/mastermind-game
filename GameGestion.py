@@ -2,30 +2,28 @@ import pygame
 import random
 from Line import Line
 from ColorPalette import ColorPalette
-from DoneLine import DoneLine
+from DoneLineGestion import DoneLineGestion
 
 class GameGestion():
     def __init__(self, level, screen_width, screen_height):
         self.screen_width = screen_width
         self.screen_height = screen_height
-        self.available_colors = [(0, 0, 255), (255, 192, 203), (255, 0, 0), (0, 255, 0)]    # (255, 255, 0), (255, 165, 0), (238, 130, 238), (255, 255, 255)] autres couleurs pour autres niveaux
+        self.available_colors = [(0, 0, 255), (255, 192, 203), (255, 0, 0), (0, 255, 0), (255, 255, 0), (255, 165, 0), (238, 130, 238), (255, 255, 255)] 
         self.line = Line(screen_width, screen_height)
-        self.colorPalette = ColorPalette(4, screen_width, screen_height, self.available_colors)
-        self.color = None
-        self.last_done_line = None 
+        
+        self.colorSelect = None
+        self.doneLineGestion = DoneLineGestion( 3*self.screen_width/8,self.screen_height * 0.02) 
         
         # Définition du nombre de couleurs disponibles selon le niveau
         if level == "Easy":
             self.nb_colors = 4
-        elif level == "Medium":
-            self.nb_colors = 6
         else:
-            self.nb_colors = 4
-        
+            self.nb_colors = 4 #4 couleur par défaut
+        self.colorPalette = ColorPalette(self.nb_colors, screen_width, screen_height, self.available_colors)
+        #creation de la combinaison
         self.combination = []
         for i in range(self.nb_colors):
-            selected_colors = random.choice(self.available_colors)
-            self.combination.append(selected_colors)
+            self.combination.append(self.available_colors[random.randint(0,self.nb_colors-1)])
     
     def verify_combination(self, proposed_combination):
         correctCount = 0 
@@ -55,18 +53,41 @@ class GameGestion():
         line_width = 4 * ball_width
         x = (self.screen_width - line_width) // 2
         y = self.screen_height // 20
-        self.last_done_line = DoneLine(x, y, proposed_combination, self.screen_width, self.screen_height, correctCount, wrongPlaceCount)
-        self.last_done_line.move(self.last_done_line.x, self.last_done_line.y)
-        
+        self.doneLineGestion.add_DoneLine(proposed_combination, self.screen_width, self.screen_height, correctCount, wrongPlaceCount)
         return correctCount == len(self.combination)
                 
     def draw(self, screen):
         screen.fill((255, 255, 255))
         self.colorPalette.draw(screen)
         self.line.draw(screen)
-        if self.last_done_line:
-            self.last_done_line.draw(screen)
-        
-        
+        if self.doneLineGestion.DoneLines:
+            self.doneLineGestion.draw(screen)
+
+    def click(self,pos):
+            if self.colorSelect is not None:
+                comb_validated = self.line.is_clicked(pos, self.colorSelect)
+                if isinstance(comb_validated, list): #si la combinaison validé est bien une liste
+                    self.verify_combination(comb_validated)
+                    self.colorSelect=None #une fois la ligne validé on reset la couleur choisi
+            color_clicked = self.colorPalette.is_clicked(pos)
+            if color_clicked:#si le joueur a cliqué sur une couleur de la palette
+                self.colorSelect = color_clicked
+
+
+
+    def scroll(self,type):
+        if (self.doneLineGestion.DoneLines) :
+            size_Doneline= 0
+            for Doneline in self.doneLineGestion.DoneLines:
+                size_Doneline+= Doneline.height*1.15 #taille de toute les DoneLine
+            ymax = 0 
+            ymin = -1*(size_Doneline - self.screen_height * 0.520)
+            speed_scroll = self.screen_height/30
+            if type==0 :
+                if self.doneLineGestion.yAll >ymin: #arrette le scroll lorsque le dernier essais en bas 
+                    self.doneLineGestion.yAll -=speed_scroll 
+            elif type ==1:
+                if self.doneLineGestion.yAll <ymax: #arrete le scroll lorsque que le premier essais est en haut de l'écran
+                    self.doneLineGestion.yAll +=speed_scroll 
         
         

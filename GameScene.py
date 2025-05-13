@@ -15,16 +15,11 @@ class GameScene(Scene):
             return "fin"
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
-                if self.color is not None:
-                    valid = self.game.line.is_clicked(event.pos, self.color)
-                    if valid:
-                        print(valid)
-                    if isinstance(valid, list):
-                        self.game.verify_combination(valid)
-
-                clicked = self.game.colorPalette.is_clicked(event.pos)
-                if clicked:
-                    self.color = clicked
+                self.game.click(event.pos)
+            elif event.button==4:
+                self.game.scroll(0)
+            elif event.button==5:
+                self.game.scroll(1)
                     
 
 
