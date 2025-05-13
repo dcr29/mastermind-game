@@ -25,6 +25,8 @@ class GameGestion():
         for i in range(self.nb_colors):
             self.combination.append(self.available_colors[random.randint(0,self.nb_colors-1)])
     
+
+    
     def verify_combination(self, proposed_combination):
         correctCount = 0 
         wrongPlaceCount = 0

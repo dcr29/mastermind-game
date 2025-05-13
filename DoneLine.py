@@ -37,5 +37,6 @@ class DoneLine:
         screen.blit(text_wrongPlaceCount, (text_x + spacing, text_y))
 
         # Affichage du nombre d'essais'
-        text_nb_Try = font.render(str(self.try_number), True, (0,0, 0))
-        screen.blit(text_nb_Try, (self.x - spacing, text_y))
+        font_nb_try = pygame.font.Font(None, self.height//2)
+        text_nb_Try = font_nb_try.render(str(self.try_number), True, (0,0, 0))
+        screen.blit(text_nb_Try, (self.x - spacing, text_y + self.height//6))
