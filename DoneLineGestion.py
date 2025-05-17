@@ -8,7 +8,8 @@ class DoneLineGestion():
         self.DoneLines=[]
 
     def add_DoneLine(self,color,screen_width, screen_height,nbGood, nbWrongPlace):
-        newValidLine = DoneLine(color,screen_width, screen_height,nbGood, nbWrongPlace)
+        try_number=len(self.DoneLines)+1
+        newValidLine = DoneLine(color,screen_width, screen_height,nbGood, nbWrongPlace,try_number)
         self.DoneLines.append(newValidLine)
         size_Doneline= 0
         for Doneline in self.DoneLines:
