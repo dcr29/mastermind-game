@@ -5,9 +5,9 @@ from ColorPalette import ColorPalette
 from GameGestion import GameGestion
 
 class GameScene(Scene):
-    def __init__(self, screen):
+    def __init__(self, screen, level):
         super().__init__(screen)
-        self.game = GameGestion("Easy", self.screen.get_width(), self.screen.get_height())
+        self.game = GameGestion(level, self.screen.get_width(), self.screen.get_height())
         self.color = None
         
     def handle_events(self, event):
@@ -15,14 +15,20 @@ class GameScene(Scene):
             return "fin"
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
-                self.game.click(event.pos)
-            elif event.button==4:
-                self.game.scroll(0)
-            elif event.button==5:
-                self.game.scroll(1)
+                if self.color is not None:
+                    valid = self.game.line.is_clicked(event.pos, self.color)
+                    if valid:
+                        print(valid)
+                    if isinstance(valid, list):
+                        self.game.verify_combination(valid)
+
+                clicked = self.game.colorPalette.is_clicked(event.pos)
+                if clicked:
+                    self.color = clicked
                     
 
 
     def draw(self):
         self.game.draw(self.screen)
+        
         

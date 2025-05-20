@@ -6,7 +6,7 @@ class SceneGestion:
     def __init__(self, screen):
         self.screen = screen
         self.running = True
-        self.current_scene = GameScene(self.screen)
+        self.current_scene = MenuScene(screen)
         
     def game_loop(self):
         while self.running:
@@ -14,5 +14,9 @@ class SceneGestion:
                     ret = self.current_scene.handle_events(event) # recupere la réponse de la scène actuelle
                     if ret == "fin" :
                         self.running = False
+                    elif ret  == "Easy" :
+                        self.current_scene = GameScene(self.screen,"Easy")
+            
             self.current_scene.draw()
-            pygame.display.flip()                                   
+            pygame.display.flip()          
+                                     
