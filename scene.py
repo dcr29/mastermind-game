@@ -42,32 +42,3 @@ class MenuScene(Scene):
         text_menu_y = self.screen_height // 12
         self.screen.blit(text_menu, (text_menu_x,text_menu_y))  # Afficher "Menu" en haut de l'écran
         
-class GameScene(Scene):
-    def __init__(self, screen, level):
-        super().__init__(screen)
-        self.game = GameGestion(level, self.screen.get_width(), self.screen.get_height())
-        self.color = None
-        
-    def handle_events(self, event):
-        if event.type == pygame.QUIT:
-            return "fin"
-        elif event.type == pygame.MOUSEBUTTONUP:
-            if event.button == 1:
-                if self.color is not None:
-                    valid = self.game.line.is_clicked(event.pos, self.color)
-                    if valid:
-                        print(valid)
-                    if isinstance(valid, list):
-                        self.game.verify_combination(valid)
-
-                clicked = self.game.colorPalette.is_clicked(event.pos)
-                if clicked:
-                    self.color = clicked
-                    
-
-
-    def draw(self):
-        self.game.draw(self.screen)
-        
-
-    
