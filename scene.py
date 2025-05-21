@@ -22,20 +22,28 @@ class MenuScene(Scene):
         play_button_width = self.screen_width // 4
         play_button_height = self.screen_height // 7
         play_button_x = (self.screen_width // 2) - (play_button_width // 2)
-        play_button_y = (self.screen_height // 2) - (play_button_height // 2)
-        self.play_button = Button(play_button_x, play_button_y, play_button_width, play_button_height, "Jouer",(23, 131, 15),50)
+        play_button_y = (self.screen_height // 2) - (3*play_button_height // 2)
+        self.easy_button = Button(play_button_x, play_button_y, play_button_width, play_button_height, "Easy",(23, 131, 15),50)
+        self.medium_button = Button(play_button_x, play_button_y+1.2*play_button_height, play_button_width, play_button_height, "Medium",(23, 131, 15),50)
+        self.hard_button = Button(play_button_x, play_button_y+2.4*play_button_height, play_button_width, play_button_height, "Hard",(23, 131, 15),50)
         
     def handle_events(self, event):
         if event.type == pygame.QUIT:
             return "fin"
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
-                if self.play_button.is_clicked(event.pos):
+                if self.easy_button.is_clicked(event.pos):
                     return "Easy"  # Changer de scène vers le jeu en easy
+                elif self.medium_button.is_clicked(event.pos):
+                    return "Medium"  # Changer de scène vers le jeu en easy
+                elif self.hard_button.is_clicked(event.pos):
+                    return "Hard"  # Changer de scène vers le jeu en easy
         
     def draw(self): 
         self.screen.fill((7, 67, 102))  # Fond menu
-        self.play_button.draw(self.screen)
+        self.easy_button.draw(self.screen)
+        self.medium_button.draw(self.screen)
+        self.hard_button.draw(self.screen)
         font = pygame.font.Font(None, 80)
         text_menu = font.render("Menu", True, (255, 255, 255))
         text_menu_width = text_menu.get_width()

@@ -8,7 +8,7 @@ class GameGestion():
     def __init__(self, level, screen_width, screen_height):
         self.screen_width = screen_width
         self.screen_height = screen_height
-        self.available_colors = [(0, 0, 255), (255, 192, 203), (255, 0, 0), (0, 255, 0), (255, 255, 0), (255, 165, 0), (238, 130, 238), (255, 255, 255)] 
+        self.available_colors = [(0, 0, 255), (255, 192, 203), (255, 0, 0), (0, 255, 0), (255, 255, 0), (255, 165, 0), (238, 130, 238), (0, 255,255)] 
         self.line = Line(screen_width, screen_height)
         
         self.colorSelect = None
@@ -17,12 +17,16 @@ class GameGestion():
         # Définition du nombre de couleurs disponibles selon le niveau
         if level == "Easy":
             self.nb_colors = 4
+        elif level == "Medium":
+            self.nb_colors = 6
+        elif level == "Hard":
+            self.nb_colors = 8
         else:
             self.nb_colors = 4 #4 couleur par défaut
         self.colorPalette = ColorPalette(self.nb_colors, screen_width, screen_height, self.available_colors)
         #creation de la combinaison
         self.combination = []
-        for i in range(self.nb_colors):
+        for i in range(4):
             self.combination.append(self.available_colors[random.randint(0,self.nb_colors-1)])
     
 
