@@ -1,5 +1,7 @@
 import pygame
 from Button import Button
+from Line import Line
+from ColorPalette import ColorPalette
 from GameGestion import GameGestion
 
 class Scene:
@@ -41,4 +43,26 @@ class MenuScene(Scene):
         text_menu_x = (self.screen_width // 2) - (text_menu_width // 2)
         text_menu_y = self.screen_height // 12
         self.screen.blit(text_menu, (text_menu_x,text_menu_y))  # Afficher "Menu" en haut de l'écran
+        
+
+class GameScene(Scene):
+    def __init__(self, screen, level):
+        super().__init__(screen)
+        self.game = GameGestion(level, self.screen.get_width(), self.screen.get_height())
+        self.color = None
+        
+    def handle_events(self, event):
+        if event.type == pygame.QUIT:
+            return "fin"
+        elif event.type == pygame.MOUSEBUTTONUP:
+            if event.button == 1:
+                self.game.click(event.pos)
+            elif event.button==4:
+                self.game.scroll(0)
+            elif event.button==5:
+                self.game.scroll(1)
+                    
+    def draw(self):
+        self.game.draw(self.screen)
+        
         
