@@ -15,6 +15,8 @@ class SceneGestion:
                         self.running = False
                     elif ret  == "Easy" :
                         self.current_scene = GameScene(self.screen,"Easy")
+                    elif ret == "WIN" :
+                        self.current_scene = WinScene(self.screen)
             
             self.current_scene.draw()
             pygame.display.flip()          
