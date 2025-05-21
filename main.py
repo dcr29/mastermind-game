@@ -1,6 +1,4 @@
 import pygame
-from scene import *
-from GameScene import GameScene
 from SceneGestion import SceneGestion
 
 
