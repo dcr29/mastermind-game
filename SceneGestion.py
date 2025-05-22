@@ -14,11 +14,16 @@ class SceneGestion:
                     if ret == "fin" :
                         self.running = False
                     elif ret  == "Easy" :
-                        self.current_scene = GameScene(self.screen,"Easy")
+                        self.current_scene = GameScene(self.screen,4,4)
                     elif ret  == "Medium" :
-                        self.current_scene = GameScene(self.screen,"Medium")
+                        self.current_scene = GameScene(self.screen,6,4)
                     elif ret  == "Hard" :
-                        self.current_scene = GameScene(self.screen,"Hard")
+                        self.current_scene = GameScene(self.screen,8,4)
+                    elif ret == "Perso":
+                        self.current_scene = SettingScene(self.screen)
+                    elif  isinstance(ret, int) :
+                        self.current_scene =  GameScene(self.screen,ret//10,ret%10) #le nombre de couleur est dans les dizaines et le nombre de trou dans les unites
+                    
             
             self.current_scene.draw()
             pygame.display.flip()          
