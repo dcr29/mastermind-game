@@ -74,9 +74,9 @@ class GameScene(Scene):
                 elif result == "Leave":
                     return "Menu" #si il quitte la parti on le renvoie au menu
             elif event.button==4:
-                self.game.scroll(1)
+                self.game.scroll("Monte")
             elif event.button==5:
-                self.game.scroll(0)
+                self.game.scroll("Descend")
                     
     def draw(self):
         self.game.draw(self.screen)

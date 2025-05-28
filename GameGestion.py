@@ -87,10 +87,10 @@ class GameGestion():
             ymax = 0 
             ymin = -1*(size_Doneline - self.screen_height * 0.520)
             speed_scroll = self.screen_height/30
-            if type==0 :
+            if type=="Descend" :
                 if self.doneLineGestion.yAll >ymin: #arrette le scroll lorsque le dernier essais en bas 
                     self.doneLineGestion.yAll -=speed_scroll 
-            elif type ==1:
+            elif type =="Monte":
                 if self.doneLineGestion.yAll <ymax: #arrete le scroll lorsque que le premier essais est en haut de l'écran
                     self.doneLineGestion.yAll +=speed_scroll 
         
