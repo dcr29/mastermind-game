@@ -63,15 +63,17 @@ class GameGestion():
     def click(self,pos):
             if self.colorSelect is not None:
                 comb_validated = self.line.is_clicked(pos, self.colorSelect)
-                if isinstance(comb_validated, list): #si la combinaison validé est bien une liste
-                    self.verify_combination(comb_validated)
-                    self.colorSelect=None #une fois la ligne validé on reset la couleur choisi
+                if isinstance(comb_validated, list): # si la combinaison validée est bien une liste
+                    success = self.verify_combination(comb_validated)
+                    self.colorSelect = None # une fois la ligne validée on reset la couleur choisie
+                    if(success):
+                        return "WIN"       
             color_clicked = self.colorPalette.is_clicked(pos)
-            if color_clicked:#si le joueur a cliqué sur une couleur de la palette
+            if color_clicked: # si le joueur a cliqué sur une couleur de la palette
                 self.colorSelect = color_clicked
-
-
-
+            
+            
+        
     def scroll(self,type):
         if (self.doneLineGestion.DoneLines) :
             size_Doneline= 0
