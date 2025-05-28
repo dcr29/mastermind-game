@@ -97,7 +97,7 @@ class SettingScene(Scene):
         self.valid_button= Button((self.screen.get_width() // 2) - (button_width // 2),button_y+button_height*1.2, button_width, button_height, "Valid", (0,255,0),20)
         self.valid_button.put_image('valid.png')
 
-      def handle_events(self, event):
+    def handle_events(self, event):
         if event.type == pygame.QUIT:
             return "fin"
         elif event.type == pygame.MOUSEBUTTONUP:
