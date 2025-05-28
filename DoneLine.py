@@ -3,18 +3,19 @@ import pygame
 class DoneLine:
     def __init__(self, color, screen_width, screen_height, correctCount, wrongPlaceCount,try_number):
         self.color = color  # liste des couleurs proposées par le joueur
+        self.screen_width = screen_width
         self.rects = [] # liste de rectangles représentants les billes
-        self.width = screen_width // 16 
+        self.width = screen_width // (3*len(self.color))
         self.height = screen_height // 12
         self.correctCount = correctCount    # nombre de billes bien placées
         self.wrongPlaceCount = wrongPlaceCount  # nombre de billes mal placées
         self.try_number=try_number
 
     def move(self, start_x, start_y):  # positionne les rectangles (billes) à partir d'un point donné
-        self.x = start_x
+        self.x = self.screen_width//2 - (len(self.color)*self.width)//2  
         self.y = start_y
         self.rects = [] #reset de la liste de rect
-        for i in range(4):
+        for i in range(len(self.color)):
             rect = pygame.Rect(self.x + i * self.width, self.y, self.width, self.height)
             self.rects.append(rect)
             
@@ -25,7 +26,7 @@ class DoneLine:
         
         font = pygame.font.Font(None, self.height)
         spacing = self.width // 2   # espacement entre le dernier carré (dernière bille) et les chiffres
-        text_x = self.x + (self.width * 4) + spacing // 2
+        text_x = self.x + (self.width * len(self.color)) + spacing // 2
         text_y = self.y + self.height // 6 
         
         # Affichage du nombre de billes bien placées (en vert)

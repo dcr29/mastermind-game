@@ -9,10 +9,10 @@ class GameGestion():
         self.screen_width = screen_width
         self.screen_height = screen_height
         self.available_colors = [(0, 0, 255), (255, 192, 203), (255, 0, 0), (0, 255, 0), (255, 255, 0), (255, 165, 0), (238, 130, 238), (0, 255,255)] 
-        self.line = Line(screen_width, screen_height)
+        self.line = Line(screen_width, screen_height,nb_hole)
         
         self.colorSelect = None
-        self.doneLineGestion = DoneLineGestion( 3*self.screen_width/8,self.screen_height * 0.02) 
+        self.doneLineGestion = DoneLineGestion( self.screen_width//2,self.screen_height * 0.02) 
 
 
         self.colorPalette = ColorPalette(nb_colors, screen_width, screen_height, self.available_colors)

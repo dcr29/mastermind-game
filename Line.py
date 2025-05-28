@@ -5,19 +5,21 @@ from Button import Button
 
 
 class Line : 
-    def __init__(self, screen_width, screen_height):
+    def __init__(self, screen_width, screen_height, nb_hole):
         self.Holes =[]
-        Hole_radius = screen_height//12
-        nb_hole = 4
-        space_between_hole = Hole_radius / 4   
+        if nb_hole < 6 :     
+            Hole_radius = screen_height//12
+        else :
+            Hole_radius = screen_height//(nb_hole*2) 
+        space_between_hole = Hole_radius / nb_hole   
         sizeLineHole = nb_hole*2*Hole_radius + (nb_hole-1)*space_between_hole #taille des trous + tailles des espace
-        x = (screen_width -sizeLineHole)/2
+        x = (screen_width -sizeLineHole)/2 
         self.rect_back = pygame.Rect(x, screen_height * 0.625,sizeLineHole,Hole_radius*2 )
-        for i in range (4):
+        for i in range (nb_hole):
             self.Holes.append(Hole(x + Hole_radius, self.rect_back.top + Hole_radius, Hole_radius, (100,100,100)))
             x += Hole_radius*2 + space_between_hole
 
-        x_bouton = x + Hole_radius
+        x_bouton = x 
         y_bouton = screen_height * 0.625 + Hole_radius/2 
         #self.valid_button= Bouton(screen_width - marge + espace_entre_trou / 2, screen_height * 0.65, bouton_width, bouton_height, "Valid", (0,255,0))
         self.valid_button= Button(x_bouton, y_bouton, Hole_radius, Hole_radius, "Valid", (0,255,0),20)
