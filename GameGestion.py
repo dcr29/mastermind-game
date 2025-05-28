@@ -5,25 +5,21 @@ from ColorPalette import ColorPalette
 from DoneLineGestion import DoneLineGestion
 
 class GameGestion():
-    def __init__(self, level, screen_width, screen_height):
+    def __init__(self,  screen_width, screen_height, nb_colors, nb_hole):
         self.screen_width = screen_width
         self.screen_height = screen_height
-        self.available_colors = [(0, 0, 255), (255, 192, 203), (255, 0, 0), (0, 255, 0), (255, 255, 0), (255, 165, 0), (238, 130, 238), (255, 255, 255)] 
-        self.line = Line(screen_width, screen_height)
+        self.available_colors = [(0, 0, 255), (255, 192, 203), (255, 0, 0), (0, 255, 0), (255, 255, 0), (255, 165, 0), (238, 130, 238), (0, 255,255)] 
+        self.line = Line(screen_width, screen_height,nb_hole)
         
         self.colorSelect = None
-        self.doneLineGestion = DoneLineGestion( 3*self.screen_width/8,self.screen_height * 0.02) 
-        
-        # Définition du nombre de couleurs disponibles selon le niveau
-        if level == "Easy":
-            self.nb_colors = 4
-        else:
-            self.nb_colors = 4 #4 couleur par défaut
-        self.colorPalette = ColorPalette(self.nb_colors, screen_width, screen_height, self.available_colors)
+        self.doneLineGestion = DoneLineGestion( self.screen_width//2,self.screen_height * 0.02) 
+
+
+        self.colorPalette = ColorPalette(nb_colors, screen_width, screen_height, self.available_colors)
         #creation de la combinaison
         self.combination = []
-        for i in range(self.nb_colors):
-            self.combination.append(self.available_colors[random.randint(0,self.nb_colors-1)])
+        for i in range(nb_hole):
+            self.combination.append(self.available_colors[random.randint(0,nb_colors-1)])
     
 
     
@@ -56,7 +52,6 @@ class GameGestion():
         x = (self.screen_width - line_width) // 2
         y = self.screen_height // 20
         self.doneLineGestion.add_DoneLine(proposed_combination, self.screen_width, self.screen_height, correctCount, wrongPlaceCount)
-        return correctCount == len(self.combination)
                 
     def draw(self, screen):
         screen.fill((255, 255, 255))
