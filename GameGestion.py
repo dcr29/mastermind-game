@@ -3,6 +3,7 @@ import random
 from Line import Line
 from ColorPalette import ColorPalette
 from DoneLineGestion import DoneLineGestion
+from Button import Button
 
 class GameGestion():
     def __init__(self,  screen_width, screen_height, nb_colors, nb_hole):
@@ -21,7 +22,7 @@ class GameGestion():
         for i in range(nb_hole):
             self.combination.append(self.available_colors[random.randint(0,nb_colors-1)])
     
-
+        self.leave_button = Button(19*screen_width/20, 0, screen_width/20, screen_width/20, "Leave",(255, 0, 0),screen_width//40)
     
     def verify_combination(self, proposed_combination):
         correctCount = 0 
@@ -60,6 +61,7 @@ class GameGestion():
         self.line.draw(screen)
         if self.doneLineGestion.DoneLines:
             self.doneLineGestion.draw(screen)
+        self.leave_button.draw(screen)
 
     def click(self,pos):
             if self.colorSelect is not None:
@@ -72,6 +74,8 @@ class GameGestion():
             color_clicked = self.colorPalette.is_clicked(pos)
             if color_clicked: # si le joueur a cliqué sur une couleur de la palette
                 self.colorSelect = color_clicked
+            if self.leave_button.is_clicked(pos):
+                return "Leave" #si il quitte on retourne au menu
             
             
         

@@ -71,6 +71,8 @@ class GameScene(Scene):
                 result = self.game.click(event.pos)
                 if result == "WIN":
                     return "WIN"
+                elif result == "Leave":
+                    return "Menu" #si il quitte la parti on le renvoie au menu
             elif event.button==4:
                 self.game.scroll(1)
             elif event.button==5:
