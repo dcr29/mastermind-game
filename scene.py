@@ -27,7 +27,8 @@ class MenuScene(Scene):
         self.medium_button = Button(play_button_x, play_button_y+1.2*play_button_height, play_button_width, play_button_height, "Medium",(23, 131, 15),50)
         self.hard_button = Button(play_button_x, play_button_y+2.4*play_button_height, play_button_width, play_button_height, "Hard",(23, 131, 15),50)
         self.perso_button = Button(play_button_x, play_button_y+3.6*play_button_height, play_button_width, play_button_height, "Perso",(23, 131, 15),50)
-        
+        self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quit",(255, 0, 0),self.screen_width//40)
+
     def handle_events(self, event):
         if event.type == pygame.QUIT:
             return "fin"
@@ -41,6 +42,8 @@ class MenuScene(Scene):
                     return "Hard"  # Changer de scène vers le jeu en hard
                 elif self.perso_button.is_clicked(event.pos):
                     return "Perso"  # Changer de scène vers le jeu en easy
+                elif self.quit_button.is_clicked(event.pos):
+                    return "fin"
         
     def draw(self): 
         self.screen.fill((7, 67, 102))  # Fond menu
@@ -48,6 +51,7 @@ class MenuScene(Scene):
         self.medium_button.draw(self.screen)
         self.hard_button.draw(self.screen)
         self.perso_button.draw(self.screen)
+        self.quit_button.draw(self.screen)
         font = pygame.font.Font(None, 80)
         text_menu = font.render("Menu", True, (255, 255, 255))
         text_menu_width = text_menu.get_width()
