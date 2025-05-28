@@ -72,9 +72,9 @@ class GameScene(Scene):
                 if result == "WIN":
                     return "WIN"
             elif event.button==4:
-                self.game.scroll(0)
-            elif event.button==5:
                 self.game.scroll(1)
+            elif event.button==5:
+                self.game.scroll(0)
                     
     def draw(self):
         self.game.draw(self.screen)
