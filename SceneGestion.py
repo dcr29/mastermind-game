@@ -25,7 +25,9 @@ class SceneGestion:
                         self.current_scene =  GameScene(self.screen,ret//10,ret%10) #le nombre de couleur est dans les dizaines et le nombre de trou dans les unites
                     elif ret == "WIN" :
                         self.current_scene = WinScene(self.screen)
-            
+                    elif ret == "Menu" :
+                        self.current_scene = MenuScene(self.screen)
+                        
             self.current_scene.draw()
             pygame.display.flip()          
                                      

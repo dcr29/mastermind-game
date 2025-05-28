@@ -180,7 +180,7 @@ class WinScene(Scene):
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.button:
                 if self.replay_button.is_clicked(event.pos):
-                    return "Easy"
+                    return "Menu"
 
     def draw(self):
         self.screen.fill((153, 204, 255))

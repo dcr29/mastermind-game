@@ -52,6 +52,7 @@ class GameGestion():
         x = (self.screen_width - line_width) // 2
         y = self.screen_height // 20
         self.doneLineGestion.add_DoneLine(proposed_combination, self.screen_width, self.screen_height, correctCount, wrongPlaceCount)
+        return correctCount == len(self.combination)
                 
     def draw(self, screen):
         screen.fill((255, 255, 255))
