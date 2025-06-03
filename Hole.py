@@ -13,11 +13,6 @@ class Hole:
         pygame.draw.circle(screen, self.color, (int(self.x), int(self.y)), self.radius)
         pygame.draw.circle(screen, (0, 0, 0), (int(self.x), int(self.y)), self.radius, 2)  # Contour noir
 
-    def move(self, x, y):
-        # Déplacer le trou
-        self.x = x
-        self.y = y
-
     def is_clicked(self, pos, color):
         x_clic, y_clic = pos
         distance = math.sqrt((x_clic - self.x) ** 2 + (y_clic - self.y) ** 2) #calcul de la distance entre le centre et le clique

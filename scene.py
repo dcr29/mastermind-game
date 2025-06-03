@@ -57,7 +57,6 @@ class MenuScene(Scene):
         font = pygame.font.Font(None, 80)
         text_menu = font.render("Menu", True, (255, 255, 255))
         text_menu_width = text_menu.get_width()
-        text_menu_height = text_menu.get_height()
         text_menu_x = (self.screen_width // 2) - (text_menu_width // 2)
         text_menu_y = self.screen_height // 12
         self.screen.blit(text_menu, (text_menu_x,text_menu_y))  # Afficher "Menu" en haut de l'écran
@@ -67,7 +66,6 @@ class GameScene(Scene):
     def __init__(self, screen, nb_colors, nb_hole):
         super().__init__(screen)
         self.game = GameGestion( self.screen.get_width(), self.screen.get_height(), nb_colors, nb_hole)
-        self.color = None
         
     def handle_events(self, event):
         if event.type == pygame.QUIT:
