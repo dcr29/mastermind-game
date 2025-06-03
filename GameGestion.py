@@ -25,15 +25,15 @@ class GameGestion():
         self.leave_button = Button(19*screen_width/20, 0, screen_width/20, screen_width/20, "Menu",(255, 0, 0),screen_width//40)
     
     def verify_combination(self, proposed_combination):
-        correctCount = 0 
-        wrongPlaceCount = 0
+        correct_count = 0 
+        wrong_place_count = 0
         used_index_secret = []
         used_index_proposed = []
         
         # Recherche des bonnes couleurs bien placées 
         for i in range(len(self.combination)):
             if self.combination[i] == proposed_combination[i]:
-                correctCount += 1
+                correct_count += 1
                 used_index_secret.append(i)
                 used_index_proposed.append(i)
         
@@ -44,7 +44,7 @@ class GameGestion():
                     if (i in used_index_secret) or (j in used_index_proposed):
                         pass
                     else :
-                        wrongPlaceCount += 1
+                        wrong_place_count += 1
                         used_index_secret.append(i)
                         used_index_proposed.append(j)
         
@@ -52,8 +52,8 @@ class GameGestion():
         line_width = 4 * ball_width
         x = (self.screen_width - line_width) // 2
         y = self.screen_height // 20
-        self.doneLineGestion.add_DoneLine(proposed_combination, self.screen_width, self.screen_height, correctCount, wrongPlaceCount)
-        return correctCount == len(self.combination)
+        self.doneLineGestion.add_DoneLine(proposed_combination, self.screen_width, self.screen_height, correct_count, wrong_place_count)
+        return correct_count == len(self.combination)
                 
     def draw(self, screen):
         screen.fill((255, 255, 255))
@@ -77,13 +77,12 @@ class GameGestion():
             if self.leave_button.is_clicked(pos):
                 return "Leave" #si il quitte on retourne au menu
             
-            
-        
+                
     def scroll(self,type):
         if (self.doneLineGestion.DoneLines) :
             size_Doneline= 0
             for Doneline in self.doneLineGestion.DoneLines:
-                size_Doneline+= Doneline.height*1.15 #taille de toute les DoneLine
+                size_Doneline+= Doneline.height*1.15 #taille de toute les DoneLine                
             ymax = 0 
             ymin = -1*(size_Doneline - self.screen_height * 0.520)
             speed_scroll = self.screen_height/30
