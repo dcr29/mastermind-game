@@ -3,6 +3,7 @@ from Button import Button
 from Line import Line
 from ColorPalette import ColorPalette
 from GameGestion import GameGestion
+from confirmation import confirmation_popup
 
 class Scene:
     def __init__(self, screen):
@@ -23,11 +24,12 @@ class MenuScene(Scene):
         play_button_height = self.screen_height // 7
         play_button_x = (self.screen_width // 2) - (play_button_width // 2)
         play_button_y = (self.screen_height // 2) - (4*play_button_height // 2)
-        self.easy_button = Button(play_button_x, play_button_y, play_button_width, play_button_height, "Easy",(23, 131, 15),50)
-        self.medium_button = Button(play_button_x, play_button_y+1.2*play_button_height, play_button_width, play_button_height, "Medium",(23, 131, 15),50)
-        self.hard_button = Button(play_button_x, play_button_y+2.4*play_button_height, play_button_width, play_button_height, "Hard",(23, 131, 15),50)
-        self.perso_button = Button(play_button_x, play_button_y+3.6*play_button_height, play_button_width, play_button_height, "Perso",(23, 131, 15),50)
-        
+        self.easy_button = Button(play_button_x, play_button_y, play_button_width, play_button_height, "Facile",(23, 131, 15),50)
+        self.medium_button = Button(play_button_x, play_button_y+1.2*play_button_height, play_button_width, play_button_height, "Moyen",(23, 131, 15),50)
+        self.hard_button = Button(play_button_x, play_button_y+2.4*play_button_height, play_button_width, play_button_height, "Difficile",(23, 131, 15),50)
+        self.perso_button = Button(play_button_x, play_button_y+3.6*play_button_height, play_button_width, play_button_height, "Personalisable",(23, 131, 15),30)
+        self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quitter",(255, 0, 0),self.screen_width//40)
+
     def handle_events(self, event):
         if event.type == pygame.QUIT:
             return "fin"
@@ -41,6 +43,9 @@ class MenuScene(Scene):
                     return "Hard"  # Changer de scène vers le jeu en hard
                 elif self.perso_button.is_clicked(event.pos):
                     return "Perso"  # Changer de scène vers le jeu en easy
+                elif self.quit_button.is_clicked(event.pos):
+                    if confirmation_popup(self.screen, "Quitter le jeu ?"):
+                        return "fin"
         
     def draw(self): 
         self.screen.fill((7, 67, 102))  # Fond menu
@@ -48,6 +53,7 @@ class MenuScene(Scene):
         self.medium_button.draw(self.screen)
         self.hard_button.draw(self.screen)
         self.perso_button.draw(self.screen)
+        self.quit_button.draw(self.screen)
         font = pygame.font.Font(None, 80)
         text_menu = font.render("Menu", True, (255, 255, 255))
         text_menu_width = text_menu.get_width()
@@ -71,10 +77,13 @@ class GameScene(Scene):
                 result = self.game.click(event.pos)
                 if result == "WIN":
                     return "WIN"
+                elif result == "Leave":
+                    if confirmation_popup(self.screen, "Quitter la partie ?"):
+                        return "Menu" #si il quitte la parti on le renvoie au menu
             elif event.button==4:
-                self.game.scroll(0)
+                self.game.scroll("Monte")
             elif event.button==5:
-                self.game.scroll(1)
+                self.game.scroll("Descend")
                     
     def draw(self):
         self.game.draw(self.screen)
@@ -85,17 +94,20 @@ class SettingScene(Scene):
     def __init__(self, screen):
         super().__init__(screen)
         self.choice_nb=[]
-        button_width = self.screen.get_width() // 8
-        button_height = self.screen.get_height() // 7
-        button_x = (self.screen.get_width() // 2) - (7*button_width // 2)
-        button_y = 3*(self.screen.get_height() // 5)
+        screen_width = screen.get_width()
+        screen_height = screen.get_height()
+        button_width = screen_width // 8
+        button_height = screen_height // 7
+        button_x = (screen_width // 2) - (7*button_width // 2)
+        button_y = 3*(screen_height // 5)
         for i in range(7):
             self.choice_nb.append(Button((button_x)+ (button_width)*(i)+i*1.3, button_y, button_width, button_height, str(i+2),(23, 131, 15),50))
         self.nb_hole=0
         self.nb_hole_validate = False 
         self.nb_color=0
-        self.valid_button= Button((self.screen.get_width() // 2) - (button_width // 2),button_y+button_height*1.2, button_width, button_height, "Valid", (0,255,0),20)
+        self.valid_button= Button((screen_width // 2) - (button_width // 2),button_y+button_height*1.2, button_width, button_height, "Valid", (0,255,0),20)
         self.valid_button.put_image('valid.png')
+        self.menu_button = Button(19*screen_width/20, 0,screen_width/20, screen_width/20, "menu",(255, 0, 0),screen_width//40)
 
     def handle_events(self, event):
         if event.type == pygame.QUIT:
@@ -114,6 +126,9 @@ class SettingScene(Scene):
                         self.nb_hole_validate = True
                     else :
                          return self.nb_color*10 + self.nb_hole 
+                elif self.menu_button.is_clicked(event.pos):
+                    if confirmation_popup(self.screen, "Retourner au menu ?"):
+                        return "Menu"
                     
 
                 
@@ -125,10 +140,10 @@ class SettingScene(Scene):
         font = pygame.font.Font(None, 80)
         text_customisation = font.render("customisation", True, (255, 255, 255))
         text_customisation_width = text_customisation.get_width()
-        text_customisation_height = text_customisation.get_height()
         text_customisation_x = (self.screen.get_width() // 2) - (text_customisation_width // 2)
         text_customisation_y = self.screen.get_height() // 12
         self.screen.blit(text_customisation, (text_customisation_x,text_customisation_y))  # Afficher "customisation" en haut de l'écran
+        self.menu_button.draw(self.screen)
         font2 = pygame.font.Font(None, 30)
         if(self.nb_hole==0):
             text_choix = font2.render("Veuillez choisir le nombre de trou", True, (255, 255, 255))
