@@ -11,11 +11,6 @@ class Ball:
         # Dessiner la bille sur l'écran centrer en x et y 
         pygame.draw.circle(screen, self.color, (self.x, self.y), self.radius)
 
-    def move(self, x, y):
-        # Déplacer la bille en x et y donner en paramètre
-        self.x = x
-        self.y = y
-
     def is_clicked(self, pos):
         # Vérifie si le clic est dans la bille
         #si oui retourne la couleur de la bille sinon retourne False
