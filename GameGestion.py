@@ -13,7 +13,7 @@ class GameGestion():
         self.line = Line(screen_width, screen_height,nb_hole)
         
         self.colorSelect = None
-        self.doneLineGestion = DoneLineGestion( self.screen_width//2,self.screen_height * 0.02) 
+        self.doneLineGestion = DoneLineGestion(self.screen_height * 0.02) 
 
 
         self.colorPalette = ColorPalette(nb_colors, screen_width, screen_height, self.available_colors)
@@ -82,7 +82,7 @@ class GameGestion():
         if (self.doneLineGestion.DoneLines) :
             size_Doneline= 0
             for Doneline in self.doneLineGestion.DoneLines:
-                size_Doneline+= Doneline.height*1.15 #taille de toute les DoneLine                
+                size_Doneline+= Doneline.ball_radius*2.15 #taille de toute les DoneLine                
             ymax = 0 
             ymin = -1*(size_Doneline - self.screen_height * 0.520)
             speed_scroll = self.screen_height/30
