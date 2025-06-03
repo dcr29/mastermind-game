@@ -24,11 +24,11 @@ class MenuScene(Scene):
         play_button_height = self.screen_height // 7
         play_button_x = (self.screen_width // 2) - (play_button_width // 2)
         play_button_y = (self.screen_height // 2) - (4*play_button_height // 2)
-        self.easy_button = Button(play_button_x, play_button_y, play_button_width, play_button_height, "Easy",(23, 131, 15),50)
-        self.medium_button = Button(play_button_x, play_button_y+1.2*play_button_height, play_button_width, play_button_height, "Medium",(23, 131, 15),50)
-        self.hard_button = Button(play_button_x, play_button_y+2.4*play_button_height, play_button_width, play_button_height, "Hard",(23, 131, 15),50)
-        self.perso_button = Button(play_button_x, play_button_y+3.6*play_button_height, play_button_width, play_button_height, "Perso",(23, 131, 15),50)
-        self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quit",(255, 0, 0),self.screen_width//40)
+        self.easy_button = Button(play_button_x, play_button_y, play_button_width, play_button_height, "Facile",(23, 131, 15),50)
+        self.medium_button = Button(play_button_x, play_button_y+1.2*play_button_height, play_button_width, play_button_height, "Moyen",(23, 131, 15),50)
+        self.hard_button = Button(play_button_x, play_button_y+2.4*play_button_height, play_button_width, play_button_height, "Difficile",(23, 131, 15),50)
+        self.perso_button = Button(play_button_x, play_button_y+3.6*play_button_height, play_button_width, play_button_height, "Personalisable",(23, 131, 15),30)
+        self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quitter",(255, 0, 0),self.screen_width//40)
 
     def handle_events(self, event):
         if event.type == pygame.QUIT:
