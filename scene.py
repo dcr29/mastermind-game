@@ -28,7 +28,8 @@ class MenuScene(Scene):
         self.medium_button = Button(play_button_x, play_button_y+1.2*play_button_height, play_button_width, play_button_height, "Moyen",(23, 131, 15),50)
         self.hard_button = Button(play_button_x, play_button_y+2.4*play_button_height, play_button_width, play_button_height, "Difficile",(23, 131, 15),50)
         self.perso_button = Button(play_button_x, play_button_y+3.6*play_button_height, play_button_width, play_button_height, "Personalisable",(23, 131, 15),30)
-        self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quitter",(255, 0, 0),self.screen_width//40)
+        self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quitter",(255, 0, 0),self.screen_width//50)
+        self.help_button = Button(19*self.screen_width/20, self.screen_height - self.screen_width/20, self.screen_width/20, self.screen_width/20, "help",(255, 0, 0),self.screen_width//40)
 
     def handle_events(self, event):
         if event.type == pygame.QUIT:
@@ -46,6 +47,8 @@ class MenuScene(Scene):
                 elif self.quit_button.is_clicked(event.pos):
                     if confirmation_popup(self.screen, "Quitter le jeu ?"):
                         return "fin"
+                elif self.help_button.is_clicked(event.pos):
+                    return "Explaination"
         
     def draw(self): 
         self.screen.fill((7, 67, 102))  # Fond menu
@@ -54,6 +57,7 @@ class MenuScene(Scene):
         self.hard_button.draw(self.screen)
         self.perso_button.draw(self.screen)
         self.quit_button.draw(self.screen)
+        self.help_button.draw(self.screen)
         font = pygame.font.Font(None, 80)
         text_menu = font.render("Menu", True, (255, 255, 255))
         text_menu_width = text_menu.get_width()
@@ -191,7 +195,7 @@ class WinScene(Scene):
         if event.type == pygame.QUIT:
             return "fin"
         elif event.type == pygame.MOUSEBUTTONUP:
-            if event.button:
+            if event.button == 1:
                 if self.replay_button.is_clicked(event.pos):
                     return "Menu"
 
@@ -209,3 +213,57 @@ class WinScene(Scene):
         
         self.replay_button.draw(self.screen)
 
+class ExplanationScene(Scene):
+    def __init__(self, screen):
+        super().__init__(screen)
+        screen_width = screen.get_width()
+        self.menu_button = Button(19*screen_width/20, 0,screen_width/20, screen_width/20, "menu",(255, 0, 0),screen_width//40)
+
+    def handle_events(self, event):
+        if event.type == pygame.QUIT:
+            return "fin"
+        elif event.type == pygame.MOUSEBUTTONUP:
+          if event.button == 1:
+                if self.menu_button.is_clicked(event.pos):
+                    if confirmation_popup(self.screen, "Retourner au menu ?"):
+                        return "Menu"
+
+    def draw(self):
+        self.screen.fill((153, 204, 255))
+        self.menu_button.draw(self.screen)
+        #titre
+        font_haut = pygame.font.Font(None, 80)
+        text_haut = font_haut.render("Bienvenue sur Mastermind", True, (255, 255, 255))
+        text_haut_x = (self.screen.get_width() // 2) - (text_haut.get_width() // 2)
+        text_y = self.screen.get_height() // 12
+        self.screen.blit(text_haut, (text_haut_x,text_y))  # Afficher texte en haut de l'écran
+        text_y += font_haut.get_height()*1.5
+
+        #paragraphe
+        font_paragraphe = pygame.font.Font(None, 24)
+
+        lines = ["Voici les regles du jeu Mastermind",
+        "Le but du jeu est de trouver la combinaison de couleurs de billes choisie par l'ordinateur aleatoirement en un minimum d'essais.",
+        "Trouver la bonne combinaison de billes revient à trouver la bonne position et la bonne couleur de chaque bille.",
+        "Il existe plusieurs niveaux :",
+        "       Facile         : 4 trous et 4 couleurs",
+        "       Moyen          : 4 trous et 6 couleurs",
+        "       Difficile      : 4 trous et 8 couleurs",
+        "       Personnalisé   :  A toi de choisir entre 2 et 8 trou et couleurs",
+        " ",
+        "Tu peux valider ta ligne lorsque que tu as remplis tout les trous avec une couleur",
+        "Apres validation tes anciennes lignes apparaissent en haut avec elle à gauche c'est ton nombre d'éssais qui s'affiche ",
+        "à leur droite en vert le nombre de couleur bien placé et en orange le nombre de bonne couleur mais mal placé",
+        " ",
+        " ",
+        " ",
+        " ",
+        "Bonne partie ! "]
+        
+        for line in lines:
+            line_text = font_paragraphe.render(line, True, (0, 0, 0))
+            self.screen.blit(line_text, (self.screen.get_width() // 10 ,text_y))
+            text_y += font_paragraphe.get_height()*1.4
+
+    
+    
