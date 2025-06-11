@@ -69,6 +69,7 @@ class GameGestion():
         if self.colorSelect:
             pos_souris = pygame.mouse.get_pos()
             pygame.mouse.set_visible(False)
+            pygame.draw.circle(screen, (0,0,0), pos_souris, (self.screen_width/100)*1.1)
             pygame.draw.circle(screen, self.colorSelect, pos_souris, self.screen_width/100)
         else :
             pygame.mouse.set_visible(True)
@@ -86,6 +87,7 @@ class GameGestion():
             if color_clicked: # si le joueur a cliqué sur une couleur de la palette
                 self.colorSelect = color_clicked
             if self.leave_button.is_clicked(pos):
+                pygame.mouse.set_visible(True)
                 return "Leave" #si il quitte on retourne au menu
             
                 
