@@ -28,8 +28,8 @@ class MenuScene(Scene):
         self.medium_button = Button(play_button_x, play_button_y+1.2*play_button_height, play_button_width, play_button_height, "Moyen",(23, 131, 15),50)
         self.hard_button = Button(play_button_x, play_button_y+2.4*play_button_height, play_button_width, play_button_height, "Difficile",(23, 131, 15),50)
         self.perso_button = Button(play_button_x, play_button_y+3.6*play_button_height, play_button_width, play_button_height, "Personalisable",(23, 131, 15),30)
-        self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quitter",(255, 0, 0),self.screen_width//50)
-        self.help_button = Button(19*self.screen_width/20, self.screen_height - self.screen_width/20, self.screen_width/20, self.screen_width/20, "help",(255, 0, 0),self.screen_width//40)
+        self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quitter",(55, 0, 255),self.screen_width//50)
+        self.help_button = Button(19*self.screen_width/20, self.screen_height - self.screen_width/20, self.screen_width/20, self.screen_width/20, "help",(55, 0, 255),self.screen_width//40)
 
     def handle_events(self, event):
         if event.type == pygame.QUIT:
@@ -229,15 +229,15 @@ class ExplanationScene(Scene):
                         return "Menu"
 
     def draw(self):
-        self.screen.fill((153, 204, 255))
+        self.screen.fill((7, 67, 102))
         self.menu_button.draw(self.screen)
         #titre
         font_haut = pygame.font.Font(None, 80)
-        text_haut = font_haut.render("Bienvenue sur Mastermind", True, (255, 255, 255))
+        text_haut = font_haut.render("Bienvenue sur Mastermind", True, (0, 255, 255))
         text_haut_x = (self.screen.get_width() // 2) - (text_haut.get_width() // 2)
         text_y = self.screen.get_height() // 12
         self.screen.blit(text_haut, (text_haut_x,text_y))  # Afficher texte en haut de l'écran
-        text_y += font_haut.get_height()*1.5
+        text_y += font_haut.get_height()*2.5
 
         #paragraphe
         font_paragraphe = pygame.font.Font(None, 24)
@@ -257,13 +257,19 @@ class ExplanationScene(Scene):
         " ",
         " ",
         " ",
-        " ",
-        "Bonne partie ! "]
-        
+        " "]
+
         for line in lines:
-            line_text = font_paragraphe.render(line, True, (0, 0, 0))
+            line_text = font_paragraphe.render(line, True, (255, 255, 255))
             self.screen.blit(line_text, (self.screen.get_width() // 10 ,text_y))
-            text_y += font_paragraphe.get_height()*1.4
+            text_y += font_paragraphe.get_height()*1.5
+        
+        #affichage bonne partie en bas
+        text_GG = font_haut.render("Bonne partie !!", True, (0, 255, 255))
+        text_GG_x = (self.screen.get_width() // 2) - (text_GG.get_width() // 2)
+        self.screen.blit(text_GG, (text_GG_x, self.screen.get_height() - text_GG.get_height()*1.5))  # Afficher texte en haut de l'écran
+
+
 
     
     
