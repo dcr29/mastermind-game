@@ -15,7 +15,6 @@ class GameGestion():
         self.colorSelect = None
         self.doneLineGestion = DoneLineGestion(self.screen_height * 0.02) 
 
-
         self.colorPalette = ColorPalette(nb_colors, screen_width, screen_height, self.available_colors)
         #creation de la combinaison
         self.combination = []
