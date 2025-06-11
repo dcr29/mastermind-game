@@ -27,6 +27,8 @@ class SceneGestion:
                         self.current_scene = WinScene(self.screen)
                     elif ret == "Menu" :
                         self.current_scene = MenuScene(self.screen)
+                    elif ret == "Explaination" :
+                        self.current_scene = ExplanationScene(self.screen)
                         
             self.current_scene.draw()
             pygame.display.flip()          
