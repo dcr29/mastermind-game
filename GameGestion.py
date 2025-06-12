@@ -22,6 +22,9 @@ class GameGestion():
             self.combination.append(self.available_colors[random.randint(0,nb_colors-1)])
     
         self.leave_button = Button(19*screen_width/20, 0, screen_width/20, screen_width/20, "Menu",(255, 0, 0),screen_width//40)
+
+        
+
     
     def verify_combination(self, proposed_combination):
         correct_count = 0 
@@ -49,9 +52,9 @@ class GameGestion():
         
         ball_width = self.screen_width // 16
         line_width = 4 * ball_width
-        x = (self.screen_width - line_width) // 2
-        y = self.screen_height // 20
         self.doneLineGestion.add_DoneLine(proposed_combination, self.screen_width, self.screen_height, correct_count, wrong_place_count)
+        if correct_count == len(self.combination):
+            pygame.mouse.set_visible(True)
         return correct_count == len(self.combination)
                 
     def draw(self, screen):
@@ -61,6 +64,16 @@ class GameGestion():
         if self.doneLineGestion.DoneLines:
             self.doneLineGestion.draw(screen)
         self.leave_button.draw(screen)
+
+        
+        if self.colorSelect:
+            pos_souris = pygame.mouse.get_pos()
+            pygame.mouse.set_visible(False)
+            pygame.draw.circle(screen, (0,0,0), pos_souris, (self.screen_width/100)*1.1)
+            pygame.draw.circle(screen, self.colorSelect, pos_souris, self.screen_width/100)
+        else :
+            pygame.mouse.set_visible(True)
+
 
     def click(self,pos):
             if self.colorSelect is not None:
@@ -74,6 +87,7 @@ class GameGestion():
             if color_clicked: # si le joueur a cliqué sur une couleur de la palette
                 self.colorSelect = color_clicked
             if self.leave_button.is_clicked(pos):
+                pygame.mouse.set_visible(True)
                 return "Leave" #si il quitte on retourne au menu
             
                 
