@@ -21,7 +21,7 @@ class Line :
 
         x_bouton = x 
         y_bouton = screen_height * 0.625 + Hole_radius/2 
-        self.valid_button= Button(x_bouton, y_bouton, Hole_radius, Hole_radius, "Valid", (0,255,0),20)
+        self.valid_button= Button(x_bouton, y_bouton, Hole_radius, Hole_radius, "Valid", (0,255,0),20,15)
         self.valid_button.put_image('valid.png')
 
     def draw(self, screen):

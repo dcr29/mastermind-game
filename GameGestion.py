@@ -21,7 +21,7 @@ class GameGestion():
         for i in range(nb_hole):
             self.combination.append(self.available_colors[random.randint(0,nb_colors-1)])
     
-        self.leave_button = Button(19*screen_width/20, 0, screen_width/20, screen_width/20, "Menu",(255, 0, 0),screen_width//40)
+        self.leave_button = Button(19*screen_width/20, 0, screen_width/20, screen_width/20, "Menu",(255, 0, 0),screen_width//40,10)
 
         
 
