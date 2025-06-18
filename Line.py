@@ -21,8 +21,8 @@ class Line :
 
         x_bouton = x 
         y_bouton = screen_height * 0.625 + Hole_radius/2 
-        self.valid_button= Button(x_bouton, y_bouton, Hole_radius, Hole_radius, "Valid", (0,255,0),20)
-        self.valid_button.put_image('valid.png')
+        self.valid_button= Button(x_bouton, y_bouton, Hole_radius, Hole_radius, "Valid", (0,255,0),20,15)
+        self.valid_button.put_image('image/valid.png')
 
     def draw(self, screen):
         pygame.draw.rect(screen, (150, 150, 150), self.rect_back, border_radius=15)  # Rectangle gris avec bords arrondis

@@ -1,5 +1,6 @@
 from scene import *
-import pygame
+from Menu import MenuScene
+from Explanation import ExplanationScene
 from ScoreGestion import *
 
 class SceneGestion:
