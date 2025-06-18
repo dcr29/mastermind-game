@@ -1,6 +1,7 @@
 from scene import *
-from Menu import MenuScene
-from Explanation import ExplanationScene
+from MenuScene import MenuScene
+from ExplanationScene import ExplanationScene
+from SettingScene import SettingScene
 from ScoreGestion import *
 
 class SceneGestion:

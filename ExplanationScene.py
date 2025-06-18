@@ -27,7 +27,7 @@ class ExplanationScene(Scene):
         self.screen.blit(self.back_ground, (0, 0))#met l'image en fond d'écran
         self.menu_button.draw(self.screen) #dessine le boutton de retour
         #titre
-        font_title = pygame.font.Font("Font/Coolvetica.otf", 80) #charge la police et taille du titre
+        font_title = pygame.font.Font("Font/Coolvetica.otf", self.screen.get_height()//10) #charge la police et taille du titre
         text_title = font_title.render("Bienvenue sur Mastermind", True, (0, 255, 255)) 
         text_haut_x = (self.screen.get_width() // 2) - (text_title.get_width() // 2) #centrage du texte
         text_y = self.screen.get_height() // 12
@@ -35,7 +35,7 @@ class ExplanationScene(Scene):
         text_y += font_title.get_height()*1.8
 
         #paragraphe
-        font_paragraphe = pygame.font.Font("Font/Coolvetica.otf", 24)
+        font_paragraphe = pygame.font.Font("Font/Coolvetica.otf", self.screen.get_height()//15)
 
         lines = ["Voici les règles du jeu Mastermind",
         "Le but du jeu est de trouver la combinaison de couleurs de billes choisie par l'ordinateur aléatoirement en un minimum d'essais.",

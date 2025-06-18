@@ -50,89 +50,11 @@ class GameScene(Scene):
 
 
 
-class SettingScene(Scene):
-    def __init__(self, screen):
-        super().__init__(screen)
-        self.choice_nb=[]
-        screen_width = screen.get_width()
-        screen_height = screen.get_height()
-        button_width = screen_width // 8
-        button_height = screen_height // 7
-        button_x = (screen_width // 2) - (7*button_width // 2)
-        button_y = 3*(screen_height // 5)
-        for i in range(7):
-            self.choice_nb.append(Button((button_x)+ (button_width)*(i)+i*1.3, button_y, button_width, button_height, str(i+2),(23, 131, 15),50,9))
-        self.nb_hole=0
-        self.nb_hole_validate = False 
-        self.nb_color=0
-        self.valid_button= Button((screen_width // 2) - (button_width // 2),button_y+button_height*1.2, button_width, button_height, "Valid", (0,255,0),20,15)
-        self.valid_button.put_image('image/valid.png')
-        self.menu_button = Button(19*screen_width/20, 0,screen_width/20, screen_width/20, "menu",(255, 0, 0),screen_width//40,10)
-
-    def handle_events(self, event):
-        if event.type == pygame.QUIT:
-            return "fin"
-        elif event.type == pygame.MOUSEBUTTONUP:
-          if event.button == 1:
-                for i in range(7):
-                    if self.choice_nb[i].is_clicked(event.pos):
-                        
-                        if(self.nb_hole_validate==False):
-                            self.nb_hole=i+2
-                        else:
-                            self.nb_color=i+2
-                if(self.valid_button.is_clicked(event.pos)):
-                    if(self.nb_hole_validate==False):
-                        self.nb_hole_validate = True
-                    else :
-                         return self.nb_color*10 + self.nb_hole 
-                elif self.menu_button.is_clicked(event.pos):
-                    if confirmation_popup(self.screen, "Retourner au menu ?"):
-                        return "Menu"
                     
 
                 
 
 
-                    
-    def draw(self):
-        self.screen.fill((7, 67, 102))  # Fond menu
-        font = pygame.font.Font(None, 80)
-        text_customisation = font.render("customisation", True, (255, 255, 255))
-        text_customisation_width = text_customisation.get_width()
-        text_customisation_x = (self.screen.get_width() // 2) - (text_customisation_width // 2)
-        text_customisation_y = self.screen.get_height() // 12
-        self.screen.blit(text_customisation, (text_customisation_x,text_customisation_y))  # Afficher "customisation" en haut de l'écran
-        self.menu_button.draw(self.screen)
-        font2 = pygame.font.Font(None, 30)
-        if(self.nb_hole==0):
-            text_choix = font2.render("Veuillez choisir le nombre de trou", True, (255, 255, 255))
-            self.screen.blit(text_choix, ((self.screen.get_width() // 2) - (text_choix.get_width() // 2),2*self.screen.get_height()/5))
-        elif(self.nb_hole!=0 and self.nb_hole_validate == False):
-            text_choix = font2.render("Veuillez choisir le nombre de trou", True, (255, 255, 255))
-            self.screen.blit(text_choix, ((self.screen.get_width() // 2) - (text_choix.get_width() // 2),2*self.screen.get_height()/5))
-            self.valid_button.draw(self.screen)
-        elif(self.nb_color==0 and self.nb_hole_validate == True):
-            text_choix = font2.render("Veuillez choisir le nombre de couleur", True, (255, 255, 255))
-            self.screen.blit(text_choix, ((self.screen.get_width() // 2) - (text_choix.get_width() // 2),2*self.screen.get_height()/5))
-        else:
-            text_choix = font2.render("Veuillez choisir le nombre de couleur", True, (255, 255, 255))
-            self.screen.blit(text_choix, ((self.screen.get_width() // 2) - (text_choix.get_width() // 2),2*self.screen.get_height()/5))
-            self.valid_button.draw(self.screen)
-
-        #affichage des boutons :
-        for i in range(7):
-            if self.nb_hole_validate == False :
-                if i == self.nb_hole-2 :
-                    self.choice_nb[i].color = (9,52,6)
-                else :
-                    self.choice_nb[i].color = (23, 131, 15)
-            else :
-                if i == self.nb_color-2 :
-                    self.choice_nb[i].color = (9,52,6)
-                else :
-                    self.choice_nb[i].color = (23, 131, 15)
-            self.choice_nb[i].draw(self.screen)    
 
         
 class WinScene(Scene):
