@@ -82,7 +82,7 @@ class GameGestion():
                     success = self.verify_combination(comb_validated)
                     self.colorSelect = None # une fois la ligne validée on reset la couleur choisie
                     if(success):
-                        return "WIN"       
+                        return "WIN"      
             color_clicked = self.colorPalette.is_clicked(pos)
             if color_clicked: # si le joueur a cliqué sur une couleur de la palette
                 self.colorSelect = color_clicked
