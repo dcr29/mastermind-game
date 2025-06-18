@@ -13,8 +13,8 @@ def confirmation_popup(screen, message):
     popup_rect = pygame.Rect(popup_x, popup_y, popup_width, popup_height)
 
     # Boutons
-    yes_button = Button(popup_x+popup_width/5, popup_y+4*popup_height/6, popup_width/5, popup_height/6, "Oui", (0, 200, 0), 30)
-    no_button = Button(popup_x+3*popup_width/5, popup_y+4*popup_height/6, popup_width/5, popup_height/6, "Non", (200, 0, 0), 30)
+    yes_button = Button(popup_x+popup_width/5, popup_y+4*popup_height/6, popup_width/5, popup_height/6, "Oui", (0, 200, 0), 30,15)
+    no_button = Button(popup_x+3*popup_width/5, popup_y+4*popup_height/6, popup_width/5, popup_height/6, "Non", (200, 0, 0), 30,15)
 
     running = True
     while running:

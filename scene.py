@@ -25,12 +25,15 @@ class MenuScene(Scene):
         play_button_height = self.screen_height // 7
         play_button_x = (self.screen_width // 2) - (play_button_width // 2)
         play_button_y = (self.screen_height // 2) - (4*play_button_height // 2)
-        self.easy_button = Button(play_button_x, play_button_y, play_button_width, play_button_height, "Facile",(23, 131, 15),50)
-        self.medium_button = Button(play_button_x, play_button_y+1.2*play_button_height, play_button_width, play_button_height, "Moyen",(23, 131, 15),50)
-        self.hard_button = Button(play_button_x, play_button_y+2.4*play_button_height, play_button_width, play_button_height, "Difficile",(23, 131, 15),50)
-        self.perso_button = Button(play_button_x, play_button_y+3.6*play_button_height, play_button_width, play_button_height, "Personalisable",(23, 131, 15),30)
-        self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quitter",(55, 0, 255),self.screen_width//50)
-        self.help_button = Button(19*self.screen_width/20, self.screen_height - self.screen_width/20, self.screen_width/20, self.screen_width/20, "help",(55, 0, 255),self.screen_width//40)
+        self.easy_button = Button(play_button_x, play_button_y, play_button_width, play_button_height, "Facile",(23, 131, 15),50,15)
+        self.medium_button = Button(play_button_x, play_button_y+1.3*play_button_height, play_button_width, play_button_height, "Moyen",(255, 128, 0),50,15)
+        self.hard_button = Button(play_button_x, play_button_y+2.6*play_button_height, play_button_width, play_button_height, "Difficile",(255, 0, 0),50,15)
+        self.perso_button = Button(play_button_x, play_button_y+3.9*play_button_height, play_button_width, play_button_height, "Personalisable",(255, 0, 255),40,15)
+        self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quitter",(55, 0, 255),self.screen_width//70,50)
+        self.help_button = Button(19*self.screen_width/20, self.screen_height - self.screen_width/20, self.screen_width/20, self.screen_width/20, "aide",(0, 255, 255),self.screen_width//60,50)
+        self.back_ground = pygame.image.load("image/background_menu2.png")
+        self.back_ground = pygame.transform.scale(self.back_ground, (self.screen_width, self.screen_height))
+
 
     def handle_events(self, event):
         if event.type == pygame.QUIT:
@@ -52,18 +55,20 @@ class MenuScene(Scene):
                     return "Explaination"
         
     def draw(self): 
-        self.screen.fill((7, 67, 102))  # Fond menu
+        #self.screen.fill((7, 67, 102))  # Fond menu
+        self.screen.blit(self.back_ground, (0, 0))
+
         self.easy_button.draw(self.screen)
         self.medium_button.draw(self.screen)
         self.hard_button.draw(self.screen)
         self.perso_button.draw(self.screen)
         self.quit_button.draw(self.screen)
         self.help_button.draw(self.screen)
-        font = pygame.font.Font(None, 80)
+        font = pygame.font.Font("Font/Coolvetica.otf", 80)
         text_menu = font.render("Menu", True, (255, 255, 255))
         text_menu_width = text_menu.get_width()
         text_menu_x = (self.screen_width // 2) - (text_menu_width // 2)
-        text_menu_y = self.screen_height // 12
+        text_menu_y = self.screen_height // 20
         self.screen.blit(text_menu, (text_menu_x,text_menu_y))  # Afficher "Menu" en haut de l'écran
         
 
@@ -104,13 +109,13 @@ class SettingScene(Scene):
         button_x = (screen_width // 2) - (7*button_width // 2)
         button_y = 3*(screen_height // 5)
         for i in range(7):
-            self.choice_nb.append(Button((button_x)+ (button_width)*(i)+i*1.3, button_y, button_width, button_height, str(i+2),(23, 131, 15),50))
+            self.choice_nb.append(Button((button_x)+ (button_width)*(i)+i*1.3, button_y, button_width, button_height, str(i+2),(23, 131, 15),50,9))
         self.nb_hole=0
         self.nb_hole_validate = False 
         self.nb_color=0
-        self.valid_button= Button((screen_width // 2) - (button_width // 2),button_y+button_height*1.2, button_width, button_height, "Valid", (0,255,0),20)
-        self.valid_button.put_image('valid.png')
-        self.menu_button = Button(19*screen_width/20, 0,screen_width/20, screen_width/20, "menu",(255, 0, 0),screen_width//40)
+        self.valid_button= Button((screen_width // 2) - (button_width // 2),button_y+button_height*1.2, button_width, button_height, "Valid", (0,255,0),20,15)
+        self.valid_button.put_image('image/valid.png')
+        self.menu_button = Button(19*screen_width/20, 0,screen_width/20, screen_width/20, "menu",(255, 0, 0),screen_width//40,10)
 
     def handle_events(self, event):
         if event.type == pygame.QUIT:
@@ -187,13 +192,13 @@ class WinScene(Scene):
         replay_button_height = self.screen_height // 7
         replay_button_x = (self.screen_width // 2) - (replay_button_width // 2)
         replay_button_y = (self.screen_height // 2) - (replay_button_height // 2)
-        self.replay_button = Button(replay_button_x, replay_button_y, replay_button_width, replay_button_height, "Rejouer ?",(23, 131, 15),50)
+        self.replay_button = Button(replay_button_x, replay_button_y, replay_button_width, replay_button_height, "Rejouer ?",(23, 131, 15),50,15)
         self.try_number = try_number
         quit_button_width = self.screen_width // 4
         quit_button_height = self.screen_height // 7
         quit_button_x = replay_button_x
         quit_button_y = 1.5 * replay_button_y
-        self.quit_button = Button(quit_button_x, quit_button_y, quit_button_width, quit_button_height, "Quitter le jeu ?",(255, 0, 0),50)
+        self.quit_button = Button(quit_button_x, quit_button_y, quit_button_width, quit_button_height, "Quitter le jeu ?",(255, 0, 0),50,15)
     
     def handle_events(self, event):
         if event.type == pygame.QUIT:
@@ -229,7 +234,7 @@ class ExplanationScene(Scene):
     def __init__(self, screen):
         super().__init__(screen)
         screen_width = screen.get_width()
-        self.menu_button = Button(19*screen_width/20, 0,screen_width/20, screen_width/20, "menu",(255, 0, 0),screen_width//40)
+        self.menu_button = Button(19*screen_width/20, 0,screen_width/20, screen_width/20, "menu",(255, 0, 0),screen_width//40,10)
 
     def handle_events(self, event):
         if event.type == pygame.QUIT:
@@ -244,28 +249,28 @@ class ExplanationScene(Scene):
         self.screen.fill((7, 67, 102))
         self.menu_button.draw(self.screen)
         #titre
-        font_haut = pygame.font.Font(None, 80)
+        font_haut = pygame.font.Font("Font/Coolvetica.otf", 80)
         text_haut = font_haut.render("Bienvenue sur Mastermind", True, (0, 255, 255))
         text_haut_x = (self.screen.get_width() // 2) - (text_haut.get_width() // 2)
         text_y = self.screen.get_height() // 12
         self.screen.blit(text_haut, (text_haut_x,text_y))  # Afficher texte en haut de l'écran
-        text_y += font_haut.get_height()*2.5
+        text_y += font_haut.get_height()*1.8
 
         #paragraphe
-        font_paragraphe = pygame.font.Font(None, 24)
+        font_paragraphe = pygame.font.Font("Font/Coolvetica.otf", 24)
 
-        lines = ["Voici les regles du jeu Mastermind",
-        "Le but du jeu est de trouver la combinaison de couleurs de billes choisie par l'ordinateur aleatoirement en un minimum d'essais.",
+        lines = ["Voici les règles du jeu Mastermind",
+        "Le but du jeu est de trouver la combinaison de couleurs de billes choisie par l'ordinateur aléatoirement en un minimum d'essais.",
         "Trouver la bonne combinaison de billes revient à trouver la bonne position et la bonne couleur de chaque bille.",
         "Il existe plusieurs niveaux :",
-        "       Facile         : 4 trous et 4 couleurs",
-        "       Moyen          : 4 trous et 6 couleurs",
-        "       Difficile      : 4 trous et 8 couleurs",
-        "       Personnalisé   :  A toi de choisir entre 2 et 8 trou et couleurs",
+        "       Facile              : 4 trous et 4 couleurs",
+        "       Moyen            : 4 trous et 6 couleurs",
+        "       Difficile           : 4 trous et 8 couleurs",
+        "       Personnalisé   : A toi de choisir entre 2 à 8 trous et couleurs",
         " ",
-        "Tu peux valider ta ligne lorsque que tu as remplis tout les trous avec une couleur",
-        "Apres validation tes anciennes lignes apparaissent en haut avec elle à gauche c'est ton nombre d'éssais qui s'affiche ",
-        "à leur droite en vert le nombre de couleur bien placé et en orange le nombre de bonne couleur mais mal placé",
+        "Tu peux valider ta ligne lorsque tu as remplit tous les trous avec une couleur",
+        "Après validation, tes anciennes lignes apparaissent en haut. À leur gauche s affiche ton nombre d éssais.",
+        "À leur droite, en vert : le nombre de couleurs bien placées ; en orange : le nombre de bonnes couleurs mal placées.",
         " ",
         " ",
         " ",
@@ -274,7 +279,7 @@ class ExplanationScene(Scene):
         for line in lines:
             line_text = font_paragraphe.render(line, True, (255, 255, 255))
             self.screen.blit(line_text, (self.screen.get_width() // 10 ,text_y))
-            text_y += font_paragraphe.get_height()*1.5
+            text_y += font_paragraphe.get_height()*1.3
         
         #affichage bonne partie en bas
         text_GG = font_haut.render("Bonne partie !!", True, (0, 255, 255))
