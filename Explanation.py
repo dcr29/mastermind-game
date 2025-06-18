@@ -19,20 +19,20 @@ class ExplanationScene(Scene):
             return "fin"
         elif event.type == pygame.MOUSEBUTTONUP:
           if event.button == 1:
-                if self.menu_button.is_clicked(event.pos):
-                    if confirmation_popup(self.screen, "Retourner au menu ?"):
-                        return "Menu"
+                if self.menu_button.is_clicked(event.pos): #est-ce que le joueur a demandé à retourner au menu 
+                    if confirmation_popup(self.screen, "Retourner au menu ?"):# on lui demande confirmation
+                        return "Menu" #on veut chnager la scene pour la scene menu
 
     def draw(self):
         self.screen.blit(self.back_ground, (0, 0))#met l'image en fond d'écran
         self.menu_button.draw(self.screen) #dessine le boutton de retour
         #titre
-        font_haut = pygame.font.Font("Font/Coolvetica.otf", 80)
-        text_haut = font_haut.render("Bienvenue sur Mastermind", True, (0, 255, 255))
-        text_haut_x = (self.screen.get_width() // 2) - (text_haut.get_width() // 2)
+        font_title = pygame.font.Font("Font/Coolvetica.otf", 80) #charge la police et taille du titre
+        text_title = font_title.render("Bienvenue sur Mastermind", True, (0, 255, 255)) 
+        text_haut_x = (self.screen.get_width() // 2) - (text_title.get_width() // 2) #centrage du texte
         text_y = self.screen.get_height() // 12
-        self.screen.blit(text_haut, (text_haut_x,text_y))  # Afficher texte en haut de l'écran
-        text_y += font_haut.get_height()*1.8
+        self.screen.blit(text_title, (text_haut_x,text_y))  # Afficher texte en haut de l'écran
+        text_y += font_title.get_height()*1.8
 
         #paragraphe
         font_paragraphe = pygame.font.Font("Font/Coolvetica.otf", 24)
@@ -55,11 +55,11 @@ class ExplanationScene(Scene):
         " "]
 
         for line in lines:
-            line_text = font_paragraphe.render(line, True, (255, 255, 255))
-            self.screen.blit(line_text, (self.screen.get_width() // 10 ,text_y))
-            text_y += font_paragraphe.get_height()*1.3
+            line_text = font_paragraphe.render(line, True, (255, 255, 255)) #on transforme chaque ligne en texte à afficher
+            self.screen.blit(line_text, (self.screen.get_width() // 10 ,text_y)) #on l'affiche
+            text_y += font_paragraphe.get_height()*1.3 #on incrémente y
         
         #affichage bonne partie en bas
-        text_GG = font_haut.render("Bonne partie !!", True, (0, 255, 255))
-        text_GG_x = (self.screen.get_width() // 2) - (text_GG.get_width() // 2)
+        text_GG = font_title.render("Bonne partie !!", True, (0, 255, 255)) #texte bonne partie
+        text_GG_x = (self.screen.get_width() // 2) - (text_GG.get_width() // 2) #centrage du texte
         self.screen.blit(text_GG, (text_GG_x, self.screen.get_height() - text_GG.get_height()*1.5))  # Afficher texte en haut de l'écran
