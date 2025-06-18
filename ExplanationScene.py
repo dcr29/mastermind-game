@@ -32,10 +32,10 @@ class ExplanationScene(Scene):
         text_haut_x = (self.screen.get_width() // 2) - (text_title.get_width() // 2) #centrage du texte
         text_y = self.screen.get_height() // 12
         self.screen.blit(text_title, (text_haut_x,text_y))  # Afficher texte en haut de l'écran
-        text_y += font_title.get_height()*1.8
+        text_y += font_title.get_height()*1.6
 
         #paragraphe
-        font_paragraphe = pygame.font.Font("Font/Coolvetica.otf", self.screen.get_height()//15)
+        font_paragraphe = pygame.font.Font("Font/Coolvetica.otf", self.screen.get_height()//35)
 
         lines = ["Voici les règles du jeu Mastermind",
         "Le but du jeu est de trouver la combinaison de couleurs de billes choisie par l'ordinateur aléatoirement en un minimum d'essais.",
