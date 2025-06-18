@@ -29,8 +29,11 @@ class MenuScene(Scene):
         self.medium_button = Button(play_button_x, play_button_y+1.3*play_button_height, play_button_width, play_button_height, "Moyen",(255, 128, 0),50,15)
         self.hard_button = Button(play_button_x, play_button_y+2.6*play_button_height, play_button_width, play_button_height, "Difficile",(255, 0, 0),50,15)
         self.perso_button = Button(play_button_x, play_button_y+3.9*play_button_height, play_button_width, play_button_height, "Personalisable",(255, 0, 255),40,15)
-        self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quitter",(55, 0, 255),self.screen_width//70,10)
-        self.help_button = Button(19*self.screen_width/20, self.screen_height - self.screen_width/20, self.screen_width/20, self.screen_width/20, "aide",(55, 0, 255),self.screen_width//40,10)
+        self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quitter",(55, 0, 255),self.screen_width//70,50)
+        self.help_button = Button(19*self.screen_width/20, self.screen_height - self.screen_width/20, self.screen_width/20, self.screen_width/20, "aide",(0, 255, 255),self.screen_width//60,50)
+        self.back_ground = pygame.image.load("image/background_menu2.png")
+        self.back_ground = pygame.transform.scale(self.back_ground, (self.screen_width, self.screen_height))
+
 
     def handle_events(self, event):
         if event.type == pygame.QUIT:
@@ -52,7 +55,9 @@ class MenuScene(Scene):
                     return "Explaination"
         
     def draw(self): 
-        self.screen.fill((7, 67, 102))  # Fond menu
+        #self.screen.fill((7, 67, 102))  # Fond menu
+        self.screen.blit(self.back_ground, (0, 0))
+
         self.easy_button.draw(self.screen)
         self.medium_button.draw(self.screen)
         self.hard_button.draw(self.screen)
@@ -109,7 +114,7 @@ class SettingScene(Scene):
         self.nb_hole_validate = False 
         self.nb_color=0
         self.valid_button= Button((screen_width // 2) - (button_width // 2),button_y+button_height*1.2, button_width, button_height, "Valid", (0,255,0),20,15)
-        self.valid_button.put_image('valid.png')
+        self.valid_button.put_image('image/valid.png')
         self.menu_button = Button(19*screen_width/20, 0,screen_width/20, screen_width/20, "menu",(255, 0, 0),screen_width//40,10)
 
     def handle_events(self, event):
