@@ -1,4 +1,5 @@
 from scene import *
+from Menu import MenuScene
 import pygame
 
 class SceneGestion:
