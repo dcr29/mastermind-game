@@ -1,4 +1,5 @@
 import json 
+import shutil
 import os 
 
 score_file = "best_score.json"
