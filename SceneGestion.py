@@ -1,6 +1,6 @@
 from scene import *
 from Menu import MenuScene
-import pygame
+from Explanation import ExplanationScene
 
 class SceneGestion:
     def __init__(self, screen):
