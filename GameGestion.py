@@ -22,6 +22,7 @@ class GameGestion():
             self.combination.append(self.available_colors[random.randint(0,nb_colors-1)])
     
         self.leave_button = Button(19*screen_width/20, 0, screen_width/20, screen_width/20, "Menu",(255, 0, 0),screen_width//40)
+        
     
     def verify_combination(self, proposed_combination):
         correct_count = 0 
@@ -69,7 +70,7 @@ class GameGestion():
                     success = self.verify_combination(comb_validated)
                     self.colorSelect = None # une fois la ligne validée on reset la couleur choisie
                     if(success):
-                        return "WIN"       
+                        return "WIN"      
             color_clicked = self.colorPalette.is_clicked(pos)
             if color_clicked: # si le joueur a cliqué sur une couleur de la palette
                 self.colorSelect = color_clicked
