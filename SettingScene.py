@@ -5,6 +5,9 @@ from confirmation import confirmation_popup
 
 
 class SettingScene(Scene):
+    #scene pour paramétrer les parties où l'on personnalise 
+    #on peut retourner au menu avec un bouton 
+    # on choisis le nombre de trou et couleur à l'aide de 6 bouton centré et d'un bouton pour valider
     def __init__(self, screen):
         super().__init__(screen)
         self.choice_nb=[]
@@ -21,7 +24,7 @@ class SettingScene(Scene):
         self.valid_button= Button((screen_width // 2) - (button_side // 2),button_y+button_side*1.2, button_side, button_side, "Valid", (0,255,0),20,15)
         self.valid_button.put_image('image/valid.png')
         self.menu_button = Button(19*screen_width/20, 0,screen_width/20, screen_width/20, "menu",(0,128, 255),screen_width//60,50)
-        self.back_ground = pygame.image.load("image/background_explanation.png") #chargement de l'image de fond de la scene d'explication, on met le meme 
+        self.back_ground = pygame.image.load("image/background_degrade.png") #chargement de l'image de fond de la scene d'explication, on met le meme 
         self.back_ground = pygame.transform.scale(self.back_ground, (screen_width, self.screen.get_height())) #on redimensionne l'image de fond 
         
 
