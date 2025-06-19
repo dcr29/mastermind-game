@@ -6,6 +6,8 @@ from confirmation import confirmation_popup
 
 
 class ExplanationScene(Scene):
+    #scene où les regles et le fonctionnement du jeux est expliquer
+    # retour au menu possible grace à un bouton en haut à droite 
     def __init__(self, screen):
         super().__init__(screen)
         screen_width = screen.get_width()

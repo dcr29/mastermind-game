@@ -5,6 +5,9 @@ from confirmation import confirmation_popup
 
 
 class SettingScene(Scene):
+    #scene pour paramétrer les parties où l'on personnalise 
+    #on peut retourner au menu avec un bouton 
+    # on choisis le nombre de trou et couleur à l'aide de 6 bouton centré et d'un bouton pour valider
     def __init__(self, screen):
         super().__init__(screen)
         self.choice_nb=[]
