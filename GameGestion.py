@@ -5,6 +5,7 @@ from ColorPalette import ColorPalette
 from DoneLineGestion import DoneLineGestion
 from Button import Button
 
+
 class GameGestion():
     def __init__(self,  screen_width, screen_height, nb_colors, nb_hole):
         self.screen_width = screen_width

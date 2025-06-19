@@ -10,7 +10,7 @@ class ExplanationScene(Scene):
         super().__init__(screen)
         screen_width = screen.get_width()
         self.menu_button = Button(19*screen_width/20, 0,screen_width/20, screen_width/20, "menu",(0,128, 255),screen_width//60,50)
-        self.back_ground = pygame.image.load("image/background_explanation.png") #chargement de l'image de fond de la scene d'explication
+        self.back_ground = pygame.image.load("image/background_degrade.png") #chargement de l'image de fond de la scene d'explication
         self.back_ground = pygame.transform.scale(self.back_ground, (screen_width, self.screen.get_height())) #on redimensionne l'image de fond 
         
 
