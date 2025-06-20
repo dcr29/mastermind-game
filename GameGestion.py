@@ -58,7 +58,7 @@ class GameGestion():
         return correct_count == len(self.combination)
                 
     def draw(self, screen):
-        screen.fill((255, 255, 255))
+        screen.fill((10, 111, 169))
         self.colorPalette.draw(screen)
         self.line.draw(screen)
         if self.doneLineGestion.DoneLines:
