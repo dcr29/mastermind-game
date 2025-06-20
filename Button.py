@@ -11,7 +11,6 @@ class Button:
         self.border_radius = b_radius
         
     def draw(self, screen):
-        #pygame.draw.rect(screen, self.color, self.rect)
         pygame.draw.rect(screen, self.color, self.rect, border_radius=self.border_radius)
         if self.image:  # Si une image est définie, on adapte ses dimensions à celles du bouton
             resized_image = pygame.transform.scale(self.image, (self.rect.width, self.rect.height)) 

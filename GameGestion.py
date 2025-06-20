@@ -22,8 +22,8 @@ class GameGestion():
         for i in range(nb_hole):
             self.combination.append(self.available_colors[random.randint(0,nb_colors-1)])
     
-        self.leave_button = Button(19*screen_width/20, 0, screen_width/20, screen_width/20, "Menu",(255, 0, 0),screen_width//40,10)
-
+        self.leave_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "Menu",(0, 76, 153),self.screen_width//70,50)
+    
         
 
     
@@ -59,11 +59,13 @@ class GameGestion():
         return correct_count == len(self.combination)
                 
     def draw(self, screen):
-        screen.fill((255, 255, 255))
+        screen.fill((10, 111, 169))
         self.colorPalette.draw(screen)
         self.line.draw(screen)
         if self.doneLineGestion.DoneLines:
             self.doneLineGestion.draw(screen)
+        
+        # On affiche "Menu" en haut à droite de l'écran
         self.leave_button.draw(screen)
 
         
@@ -85,11 +87,11 @@ class GameGestion():
                     if(success):
                         return "WIN"      
             color_clicked = self.colorPalette.is_clicked(pos)
-            if color_clicked: # si le joueur a cliqué sur une couleur de la palette
+            if color_clicked: # Si le joueur a cliqué sur une couleur de la palette
                 self.colorSelect = color_clicked
             if self.leave_button.is_clicked(pos):
                 pygame.mouse.set_visible(True)
-                return "Leave" #si il quitte on retourne au menu
+                return "Leave" # Si il quitte on retourne au menu
             
                 
     def scroll(self,type):

@@ -1,5 +1,6 @@
 from scene import *
 from MenuScene import MenuScene
+from GameScene import GameScene
 from ExplanationScene import ExplanationScene
 from SettingScene import SettingScene
 from ScoreGestion import *
