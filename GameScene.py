@@ -16,7 +16,7 @@ class GameScene(Scene):
             if event.button == 1:
                 result = self.game.click(event.pos)
                 if result == "WIN":
-                    return ("WIN", len(self.game.doneLineGestion.DoneLines))
+                    return "WIN"
                 elif result == "Leave":
                     if confirmation_popup(self.screen, "Quitter la partie ?"):
                         return "Menu" #si il quitte la parti on le renvoie au menu

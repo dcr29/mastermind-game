@@ -1,4 +1,4 @@
-from scene import *
+import pygame
 from MenuScene import MenuScene
 from GameScene import GameScene
 from ExplanationScene import ExplanationScene
