@@ -33,7 +33,7 @@ Pour lancer notre jeux il suffit de télécharger ou cloner le dépot github, et
 Si tout est installer, pour lancer le jeux réalisez un double-clic sur le fichier Mastermind_Windows.bat
 
 ( Comment vérifier si tout est installé et l'installer sinon: 
-Ouvrez l'invite de commande et tapez `python3 --version` si il apparait *python3.Y.X c'est que python est installer mais si il aparait *'python' n’est pas reconnu en tant que commande interne ou externe.*, vous devez installer python en téléhargant la version de python depuis le lien https://www.python.org/downloads/ puis en exécutant le .exe, durant l'installation pensez à cocher *Add Python 3.x to PATH* . Python3 est maintenant installer. 
+Ouvrez l'invite de commande et tapez `python3 --version` si il apparait *python3.Y.X c'est que python est installer mais si il aparait *'python' n’est pas reconnu en tant que commande interne ou externe.*, vous devez installer python en téléhargant la version de python depuis le lien https://www.python.org/downloads/ puis en exécutant le .exe, durant l'installation pensez à cocher *Add Python 3.x to PATH* . Python3 est maintenant installer.  
 Maintenant tapez `python -m pygame --version` dans l'invite de commande, si il apparait par exemple *2.3.0* c'est que pygame est installer tu peux donc lancer le jeu mais si il apparait une erreur comme *No module named pygame*, il faut installer pygame en tapant la commande `pip install pygame`. Pygame et python sont maintenant installer, le jeu peut etre lancé)
 
   **Sur Mac et Linux**
@@ -42,7 +42,7 @@ Pour lancer notre jeux il suffit de télécharger ou cloner le dépot github, et
 Si tout est installer, exécutez le fichier Mastermind_mac_linux.sh avec la commande `./Mastermind_mac_linux.sh` une fois placer dans le dossier télécharger.
 
 ( Comment vérifier si tout est installé et l'installer sinon:
-Ouvrez le terminal et tapez `python3 --version` si il apparait *python3.Y.X c'est que python est installer mais si il aparait une erreur de type *command not found* c'est que python n'est pas installer il faut alors l'installer. 
+Ouvrez le terminal et tapez `python3 --version` si il apparait *python3.Y.X c'est que python est installer mais si il aparait une erreur de type *command not found* c'est que python n'est pas installer il faut alors l'installer.  
 Pour vérifier que pygame est installer, tapez la commande `python3 --version` si il apparait par exemple *2.3.0* c'est que pygame est installer tu peux donc lancer le jeu mais si il apparait une erreur comme *No module named pygame*, il faut installer pygame en tapant la commande `pip install pygame`. Pygame et python sont maintenant installer, le jeu peut etre lancé)
 
 
