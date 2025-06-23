@@ -25,3 +25,20 @@ Après chaque chaque essai, le nombre de billes de la **bonne couleur** et à la
 
 Le nombre de billes à la **bonne position** mais **pas de la bonne couleur** est indiqué par un **chiffre en orange**.
 
+**Lancement du jeu :**
+  **Sur windows**
+Pour lancer notre jeux il suffit de télécharger ou cloner le dépot github, et d'avoir python3 et pygame d'installer sur le PC.
+Si tout est installer, pour lancer le jeux double cliquer sur le fichier Mastermind_Windows.bat
+
+( Comment vérifier si tout est installé et l'installer sinon: 
+Ouvrez l'invite de commande et tapez `python3 --version` si il apparait *python3.Y.X c'est que python est installer mais si il aparait *'python' n’est pas reconnu en tant que commande interne ou externe.*, vous devez installer python en téléhargant la version de python depuis le lien https://www.python.org/downloads/ puis en exécutant le .exe, durant l'installation pensez à cocher *Add Python 3.x to PATH* . Python3 est maintenant installer. 
+Maintenant taper `python -m pygame --version` dans l'invite de commande, si il apparait par exemple *2.3.0* c'est que pygame est installer tu peux donc lancer le jeu mais si il apparait une erreur comme *No module named pygame*, il faut installer pygame en tapant la commande `pip install pygame`. Pygame et python sont maintenant installer )
+
+  **Sur Mac et Linux**
+
+
+
+
+
+
+
