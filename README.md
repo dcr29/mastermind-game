@@ -27,23 +27,24 @@ Le nombre de billes à la **bonne position** mais **pas de la bonne couleur** es
 
 **Lancement du jeu :** 
 
-  **Sur windows**
+  **Sur Windows**
   
-Pour lancer notre jeux il suffit de télécharger ou cloner le dépot github, et d'avoir python3 et pygame d'installer sur votre PC.
-Si tout est installer, pour lancer le jeux réalisez un double-clic sur le fichier Mastermind_Windows.bat
+Pour lancer notre jeu Mastermind il suffit de télécharger ou cloner le dépot Github, et d'avoir python3 et pygame d'installés sur votre PC.
+Si tout est installé, pour lancer le jeu réalisez un double-clic sur le fichier `Mastermind_Windows.bat`.
 
 ( Comment vérifier si tout est installé et l'installer sinon: 
-Ouvrez l'invite de commande et tapez `python3 --version` si il apparait *python3.Y.X c'est que python est installer mais si il aparait *'python' n’est pas reconnu en tant que commande interne ou externe.*, vous devez installer python en téléhargant la version de python depuis le lien https://www.python.org/downloads/ puis en exécutant le .exe, durant l'installation pensez à cocher *Add Python 3.x to PATH* . Python3 est maintenant installer.  
-Maintenant tapez `python -m pygame --version` dans l'invite de commande, si il apparait par exemple *2.3.0* c'est que pygame est installer tu peux donc lancer le jeu mais si il apparait une erreur comme *No module named pygame*, il faut installer pygame en tapant la commande `pip install pygame`. Pygame et python sont maintenant installer, le jeu peut etre lancé)
+Ouvrez l'invite de commande et tapez `python3 --version` s'il apparaît *python3.Y.X c'est que python est installé mais si il apparaît *'python' n’est pas reconnu en tant que  commande interne ou externe.*, vous devez installer python en téléchargant la version de python depuis le lien https://www.python.org/downloads/ puis en exécutant le .exe, durant  l'installation pensez à cocher *Add Python 3.x to PATH* . Python3 est maintenant installé.  
+Maintenant tapez `python -m pygame --version` dans l'invite de commande, s'il apparaît par exemple *2.3.0* c'est que pygame est installé vous pouvez donc lancer le jeu mais s'il apparaît une erreur comme *No module named pygame*, il faut installer pygame en tapant la commande `pip install pygame`. Pygame et python sont maintenant installés, le jeu peut être lancé ).
 
   **Sur Mac et Linux**
 
-Pour lancer notre jeux il suffit de télécharger ou cloner le dépot github, et d'avoir python3 et pygame d'installer sur votre PC.
-Si tout est installer, exécutez le fichier Mastermind_mac_linux.sh avec la commande `./Mastermind_mac_linux.sh` une fois placer dans le dossier télécharger.
+Pour lancer notre jeu Mastermind il suffit de télécharger ou cloner le dépot github, et d'avoir python3 et pygame d'installés sur votre PC.
+Si tout est installé, il faut ajouter les droits d'exécution sur le fichier en tapant la commande `chmod +x Mastermind_mac_linux.sh`.
+Enfin, vous pouvez exécuter le fichier Mastermind_mac_linux.sh avec la commande `./Mastermind_mac_linux.sh` une fois placé dans le dossier téléchargé.
 
 ( Comment vérifier si tout est installé et l'installer sinon:
-Ouvrez le terminal et tapez `python3 --version` si il apparait *python3.Y.X c'est que python est installer mais si il aparait une erreur de type *command not found* c'est que python n'est pas installer il faut alors l'installer.  
-Pour vérifier que pygame est installer, tapez la commande `python3 --version` si il apparait par exemple *2.3.0* c'est que pygame est installer tu peux donc lancer le jeu mais si il apparait une erreur comme *No module named pygame*, il faut installer pygame en tapant la commande `pip install pygame`. Pygame et python sont maintenant installer, le jeu peut etre lancé)
+Ouvrez le terminal et tapez `python3 --version` s'il apparaît *python3.Y.X c'est que python est installé mais s'il apparaît une erreur de type *command not found* c'est que python n'est pas installé il faut alors l'installer.  
+Pour vérifier que pygame est installé, tapez la commande `python3 --version` s'il apparaît par exemple *2.3.0* c'est que pygame est installé, vous pouvez donc lancer le jeu mais s'il apparaît une erreur comme *No module named pygame*, il faut installer pygame en tapant la commande `pip install pygame`. Pygame et python sont maintenant installés, le jeu peut être lancé)
 
 
 
