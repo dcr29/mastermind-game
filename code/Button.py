@@ -17,7 +17,7 @@ class Button:
             img_rect = resized_image.get_rect(center=self.rect.center)
             screen.blit(resized_image, img_rect)
         else :
-            font = pygame.font.Font("Font/Coolvetica.otf", self.font_size)
+            font = pygame.font.Font("code/Font/Coolvetica.otf", self.font_size)
             text_surface = font.render(self.text, True, (255, 255, 255))
             text_rect = text_surface.get_rect(center=self.rect.center)  
             screen.blit(text_surface, text_rect)

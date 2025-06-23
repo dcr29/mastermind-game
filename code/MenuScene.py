@@ -18,7 +18,7 @@ class MenuScene(Scene):
         self.perso_button = Button(play_button_x, play_button_y+3.9*play_button_height, play_button_width, play_button_height, "Personalisable",(255, 0, 255),40,15)
         self.quit_button = Button(19*self.screen_width/20, 0, self.screen_width/20, self.screen_width/20, "quitter",(55, 0, 255),self.screen_width//70,50)
         self.help_button = Button(19*self.screen_width/20, self.screen_height - self.screen_width/20, self.screen_width/20, self.screen_width/20, "aide",(0, 255, 255),self.screen_width//60,50)
-        self.back_ground = pygame.image.load("image/background_menu.png") #chargement de l'image de fond du Menu
+        self.back_ground = pygame.image.load("code/image/background_menu.png") #chargement de l'image de fond du Menu
         self.back_ground = pygame.transform.scale(self.back_ground, (self.screen_width, self.screen_height)) #on redimensionne l'image de fond du menu 
 
 
@@ -51,7 +51,7 @@ class MenuScene(Scene):
         self.quit_button.draw(self.screen)
         self.help_button.draw(self.screen)
         #on affiche "Menu" en haut de l'écran
-        font = pygame.font.Font("Font/Coolvetica.otf", 80)
+        font = pygame.font.Font("code/Font/Coolvetica.otf", 80)
         text_menu = font.render("Menu", True, (255, 255, 255))
         text_menu_width = text_menu.get_width()
         text_menu_x = (self.screen_width // 2) - (text_menu_width // 2)

@@ -20,7 +20,7 @@ class WinScene(Scene):
         self.quit_button = Button(button_x, button_y + button_height*1.5, button_width, button_height, "Quitter le jeu ?",(255, 0, 0),50,15)
         self.combination = combination
         self.try_number = try_number #nombre d'essais mis par le joueur pour gagné
-        self.back_ground = pygame.image.load("image/background_win.png") #chargement de l'image de fond de la scene d'explication
+        self.back_ground = pygame.image.load("code/image/background_win.png") #chargement de l'image de fond de la scene d'explication
         self.back_ground = pygame.transform.scale(self.back_ground, (self.screen_width, self.screen_height)) #on redimensionne l'image de fond 
         
 
@@ -38,7 +38,7 @@ class WinScene(Scene):
 
     def draw(self):
         self.screen.blit(self.back_ground, (0, 0))#met l'image en fond d'écran
-        font = pygame.font.Font("Font/Coolvetica.otf", self.screen_height//12)
+        font = pygame.font.Font("code/Font/Coolvetica.otf", self.screen_height//12)
         
         win_text = font.render("Félicitations !", True, (255, 255, 255))
         text_rect = win_text.get_rect(center=(self.screen_width // 2, self.screen_height // 12)) #centrage de "Félicitations !" à 1/12 de la hauteur
