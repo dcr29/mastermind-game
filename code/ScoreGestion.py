@@ -4,8 +4,15 @@ import os # Pour intéragir avec le système d'xploitation (recherche de fichier
 
 # Fichier de score principal ('best_score.json') 
 # et son modèle (tous les best_score à 'null') si le joueur n'a jamais joué au jeu ('best_score.template.json')
-score_file = "best_score.json"
-score_template_file = "best_score.template.json"
+#score_file = "best_score.json"
+#score_template_file = "best_score.template.json"
+
+# Chemin du dossier où se trouvent vos .py
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Fichiers de score
+score_file = os.path.join(base_dir, "best_score.json")
+score_template_file = os.path.join(base_dir, "best_score.template.json")
 
 default_score = {"Easy" : None, "Medium" : None, "Hard" : None} 
 

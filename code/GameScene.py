@@ -29,8 +29,8 @@ class GameScene(Scene):
         self.game.draw(self.screen)
         
         if self.best_score:
-            font_best_score = pygame.font.Font("Font/Coolvetica.otf", self.screen.get_height()//10)
-            trophy_picture = pygame.image.load('image/trophee_best_score.png')
+            font_best_score = pygame.font.Font("code/Font/Coolvetica.otf", self.screen.get_height()//10)
+            trophy_picture = pygame.image.load('code/image/trophee_best_score.png')
             
             # Redimensionnement de l'image 'trophee_best_score.png' 
             real_width, real_height = trophy_picture.get_size()

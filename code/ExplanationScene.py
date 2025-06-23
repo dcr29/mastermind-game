@@ -12,7 +12,7 @@ class ExplanationScene(Scene):
         super().__init__(screen)
         screen_width = screen.get_width()
         self.menu_button = Button(19*screen_width/20, 0,screen_width/20, screen_width/20, "menu",(0,128, 255),screen_width//60,50)
-        self.back_ground = pygame.image.load("image/background_degrade.png") #chargement de l'image de fond de la scene d'explication
+        self.back_ground = pygame.image.load("code/image/background_degrade.png") #chargement de l'image de fond de la scene d'explication
         self.back_ground = pygame.transform.scale(self.back_ground, (screen_width, self.screen.get_height())) #on redimensionne l'image de fond 
         
 
@@ -29,7 +29,7 @@ class ExplanationScene(Scene):
         self.screen.blit(self.back_ground, (0, 0))#met l'image en fond d'écran
         self.menu_button.draw(self.screen) #dessine le boutton de retour
         #titre
-        font_title = pygame.font.Font("Font/Coolvetica.otf", self.screen.get_height()//10) #charge la police et taille du titre
+        font_title = pygame.font.Font("code/Font/Coolvetica.otf", self.screen.get_height()//10) #charge la police et taille du titre
         text_title = font_title.render("Bienvenue sur Mastermind", True, (0, 255, 255)) 
         text_haut_x = (self.screen.get_width() // 2) - (text_title.get_width() // 2) #centrage du texte
         text_y = self.screen.get_height() // 12
@@ -37,7 +37,7 @@ class ExplanationScene(Scene):
         text_y += font_title.get_height()*1.6
 
         #paragraphe
-        font_paragraphe = pygame.font.Font("Font/Coolvetica.otf", self.screen.get_height()//35)
+        font_paragraphe = pygame.font.Font("code/Font/Coolvetica.otf", self.screen.get_height()//35)
 
         lines = ["Voici les règles du jeu Mastermind",
         "Le but du jeu est de trouver la combinaison de couleurs de billes choisie par l'ordinateur aléatoirement en un minimum d'essais.",
