@@ -44,7 +44,7 @@ Enfin, vous pouvez exécuter le fichier Mastermind_mac_linux.sh avec la commande
 
 ( Comment vérifier si tout est installé et l'installer sinon:
 Ouvrez le terminal et tapez `python3 --version` s'il apparaît *python3.Y.X c'est que python est installé mais s'il apparaît une erreur de type *command not found* c'est que python n'est pas installé il faut alors l'installer.  
-Pour vérifier que pygame est installé, tapez la commande `python3 --version` s'il apparaît par exemple *2.3.0* c'est que pygame est installé, vous pouvez donc lancer le jeu mais s'il apparaît une erreur comme *No module named pygame*, il faut installer pygame en tapant la commande `pip install pygame`. Pygame et python sont maintenant installés, le jeu peut être lancé)
+Pour vérifier que pygame est installé, tapez la commande `python3 --version` s'il apparaît par exemple *2.3.0* c'est que pygame est installé, vous pouvez donc lancer le jeu mais s'il apparaît une erreur comme *No module named pygame*, il faut installer pygame en tapant la commande `pip install pygame`. Pygame et python sont maintenant installés, le jeu peut être lancé ).
 
 
 
