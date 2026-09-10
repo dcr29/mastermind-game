@@ -38,7 +38,7 @@ class WinScene(Scene):
 
     def draw(self):
         self.screen.blit(self.back_ground, (0, 0))#met l'image en fond d'écran
-        font = pygame.font.Font("code/Font/Coolvetica.otf", self.screen_height//12)
+        font = pygame.font.Font(None, self.screen_height//12)
         
         win_text = font.render("Félicitations !", True, (255, 255, 255))
         text_rect = win_text.get_rect(center=(self.screen_width // 2, self.screen_height // 12)) #centrage de "Félicitations !" à 1/12 de la hauteur

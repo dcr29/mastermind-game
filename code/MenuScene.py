@@ -51,7 +51,7 @@ class MenuScene(Scene):
         self.quit_button.draw(self.screen)
         self.help_button.draw(self.screen)
         #on affiche "Menu" en haut de l'écran
-        font = pygame.font.Font("code/Font/Coolvetica.otf", 80)
+        font = pygame.font.Font(None, 80)
         text_menu = font.render("Menu", True, (255, 255, 255))
         text_menu_width = text_menu.get_width()
         text_menu_x = (self.screen_width // 2) - (text_menu_width // 2)

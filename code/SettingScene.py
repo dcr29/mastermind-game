@@ -53,7 +53,7 @@ class SettingScene(Scene):
                         
     def draw(self):
         self.screen.blit(self.back_ground, (0, 0))#met l'image en fond d'écran
-        font_title = pygame.font.Font("code/Font/Coolvetica.otf", self.screen.get_height()//10) # police du titre
+        font_title = pygame.font.Font(None, self.screen.get_height()//10) # police du titre
         text_customisation = font_title.render("Personnalisation", True, (255,255, 255))
         text_customisation_width = text_customisation.get_width()
         text_customisation_x = (self.screen.get_width() // 2) - (text_customisation_width // 2)
@@ -61,7 +61,7 @@ class SettingScene(Scene):
         self.screen.blit(text_customisation, (text_customisation_x,text_customisation_y))  # Afficher "customisation" en haut de l'écran
         self.menu_button.draw(self.screen) #dessine le bouton pour retourner au menu
         #text du choix
-        font_text = pygame.font.Font("code/Font/Coolvetica.otf", self.screen.get_height()//15)
+        font_text = pygame.font.Font(None, self.screen.get_height()//15)
         text_choix_y = 2*self.screen.get_height()/6
         if(self.nb_hole==0):
             #on propose de choisir le nombre de trous mais pas de valider

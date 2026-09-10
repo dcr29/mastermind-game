@@ -1,53 +1,99 @@
-# Mastermind-Project
-## Projet programmation 2A 
+# Mastermind
 
-### Nathan Kubiez-Develay / Dimitri Courtois Rozelot
+A Mastermind game developed in Python using Pygame.
 
-**Règles du jeu :**
+## Overview
 
-Le but du jeu est de trouver **la combinaison de couleurs de billes** choisie par l'ordinateur en **un minimum d'essais**.
+The goal of the game is to guess the hidden combination of colored pegs in as few attempts as possible.
 
-Trouver la bonne combinaison de billes revient à trouver **la bonne position** et **la bonne couleur** de chaque bille.
+After each attempt, the game indicates:
 
-Il existe plusieurs **modes de jeu** :
+- The number of pegs with the correct color and position.
+- The number of pegs with the correct color but wrong position.
 
-- "facile" : 4 trous pouvant accueillir les billes, 4 billes de couleurs différentes 
-	
-- "moyen" : 4 trous, 6 billes différentes
+## Game Modes
 
-- "difficile" : 4 trous, 8 billes différentes
+- **Easy:** 4 holes, 4 available colors
+- **Medium:** 4 holes, 6 available colors
+- **Hard:** 4 holes, 8 available colors
+- **Custom:** Choose between 2 and 8 holes and 2 and 8 colors
 
-- "personalisable" : l'utilisateur peut choisir le nombre de trous entre 2 et 8 et le nombre de couleurs entre 2 et 8
+The game keeps track of the best score for each standard game mode.
 
-Le joueur possède **un nombre d'essais infini** et son meilleur score par mode de jeu ("facile", "moyen", "difficile") est affiché en haut à gauche de la fenêtre de jeu.
+## Technologies
 
-Après chaque chaque essai, le nombre de billes de la **bonne couleur** et à la **bonne position** est indiqué par un **chiffre en vert**.
+- Python
+- Pygame
+- Object-oriented programming
+- Git / GitHub
 
-Le nombre de billes à la **bonne position** mais **pas de la bonne couleur** est indiqué par un **chiffre en orange**.
+## My Contribution
 
-**Lancement du jeu :** 
+Developed as part of a two-person team.
 
-  **Sur Windows**
-  
-Pour lancer notre jeu Mastermind il suffit de télécharger ou cloner le dépot Github, et d'avoir python3 et pygame d'installés sur votre PC.
-Si tout est installé, pour lancer le jeu réalisez un double-clic sur le fichier `Mastermind_Windows.bat`.
+My contributions included:
 
-( Comment vérifier si tout est installé et l'installer sinon: 
-Ouvrez l'invite de commande et tapez `python3 --version` s'il apparaît *python3.Y.X c'est que python est installé mais si il apparaît *'python' n’est pas reconnu en tant que  commande interne ou externe.*, vous devez installer python en téléchargant la version de python depuis le lien https://www.python.org/downloads/ puis en exécutant le .exe, durant  l'installation pensez à cocher *Add Python 3.x to PATH* . Python3 est maintenant installé.  
-Maintenant tapez `python -m pygame --version` dans l'invite de commande, s'il apparaît par exemple *2.3.0* c'est que pygame est installé vous pouvez donc lancer le jeu mais s'il apparaît une erreur comme *No module named pygame*, il faut installer pygame en tapant la commande `pip install pygame`. Pygame et python sont maintenant installés, le jeu peut être lancé ).
+- Implementing game logic and interactive features.
+- Developing graphical elements and buttons.
+- Designing and organizing the application into dedicated classes and modules.
+- Working on scene management and score handling.
+- Contributing to the project architecture and development using Git and GitHub.
 
-  **Sur Mac et Linux**
+## Installation
 
-Pour lancer notre jeu Mastermind il suffit de télécharger ou cloner le dépot github, et d'avoir python3 et pygame d'installés sur votre PC.
-Si tout est installé, il faut ajouter les droits d'exécution sur le fichier en tapant la commande `chmod +x Mastermind_mac_linux.sh`.
-Enfin, vous pouvez exécuter le fichier Mastermind_mac_linux.sh avec la commande `./Mastermind_mac_linux.sh` une fois placé dans le dossier téléchargé.
+Clone the repository:
 
-( Comment vérifier si tout est installé et l'installer sinon:
-Ouvrez le terminal et tapez `python3 --version` s'il apparaît *python3.Y.X c'est que python est installé mais s'il apparaît une erreur de type *command not found* c'est que python n'est pas installé il faut alors l'installer.  
-Pour vérifier que pygame est installé, tapez la commande `python3 --version` s'il apparaît par exemple *2.3.0* c'est que pygame est installé, vous pouvez donc lancer le jeu mais s'il apparaît une erreur comme *No module named pygame*, il faut installer pygame en tapant la commande `pip install pygame`. Pygame et python sont maintenant installés, le jeu peut être lancé ).
+```bash
+git clone https://github.com/YOUR_USERNAME/mastermind-game.git
+cd mastermind-game
+```
 
+Create a virtual environment:
 
+```bash
+python -m venv venv
+```
 
+Activate it.
 
+On macOS and Linux:
 
+```bash
+source venv/bin/activate
+```
 
+On Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+Install the dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+Run the game with:
+
+```bash
+python code/main.py
+```
+
+## Project Structure
+
+```text
+code/
+├── main.py
+├── GameScene.py
+├── GameGestion.py
+├── SceneGestion.py
+├── ScoreGestion.py
+├── ColorPalette.py
+├── DoneLine.py
+├── DoneLineGestion.py
+├── Button.py
+└── ...
+```
